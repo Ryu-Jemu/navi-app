@@ -1,5 +1,7 @@
 import React from 'react';
 import './LoginPage.css';
+import { Link } from 'react-router-dom';
+
 
 const LoginPage = () => {
   return (
@@ -24,9 +26,9 @@ const LoginPage = () => {
     </div>
 
     <div className="login-links">
-        <a href="#">Find Password</a>
-        <span>|</span>
-        <a href="#">Sign up</a>
+      <Link to="/find">Find Password</Link>
+      <span>|</span>
+      <Link to="/signup">Sign up</Link>
     </div>
     </div>
   );

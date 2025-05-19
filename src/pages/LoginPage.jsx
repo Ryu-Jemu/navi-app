@@ -1,12 +1,12 @@
 import React from 'react';
 import './LoginPage.css';
+import { Link } from 'react-router-dom';
+
 
 const LoginPage = () => {
   return (
     <div className="login-container">
     <h1 className="login-logo">Navi</h1>
-
-    {/* 박스를 감싸는 wrapper */}
     <div className="login-wrapper">
         <h2 className="login-title">Log-In</h2>
 
@@ -24,12 +24,14 @@ const LoginPage = () => {
     </div>
 
     <div className="login-links">
-        <a href="#">Find Password</a>
-        <span>|</span>
-        <a href="#">Sign up</a>
+      <a href="#">Find Password</a>
+      <span>|</span>
+      <Link to="/signup">Sign up</Link>
     </div>
     </div>
   );
 };
 
 export default LoginPage;
+
+

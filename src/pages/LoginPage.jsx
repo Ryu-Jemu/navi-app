@@ -7,8 +7,6 @@ const LoginPage = () => {
   return (
     <div className="login-container">
     <h1 className="login-logo">Navi</h1>
-
-    {/* 박스를 감싸는 wrapper */}
     <div className="login-wrapper">
         <h2 className="login-title">Log-In</h2>
 
@@ -35,3 +33,5 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+

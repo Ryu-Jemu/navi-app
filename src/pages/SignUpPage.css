@@ -1,0 +1,53 @@
+.signup-container {
+    background-color: var(--main-yellow);
+    width: 100vw;
+    min-height: 100vh;
+    font-family: 'Pretendard', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px;
+  }
+  
+  .signup-logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  
+  .signup-form {
+    width: 340px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .signup-form label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .signup-form input,
+  .signup-form select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+  }
+  
+  .signup-form button {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }

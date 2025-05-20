@@ -1,6 +1,12 @@
 :root {
-    --main-yellow: #FCC521;
-    --white: #F2F2F2;
-    --black: #2B2B2B;
-    --sub-gray: #515151;
-  }
+  --main-yellow: #FCC521;
+  --sub-yellow-1: #FFF7E0;
+  --sub-yellow-2: #FDF2C7;
+  --navy: #2D2E3D;
+  --red: #FF5833;
+  --white: #F2F2F2;
+  --black: #2B2B2B;
+  --sub-gray: #515151;
+  --gray-1: #B0B0B0;
+  --gray-2: #E5E5E5;
+}

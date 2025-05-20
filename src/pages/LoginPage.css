@@ -29,7 +29,7 @@
     font-weight: 400;
     color: var(--black);
     margin-bottom: 6px;
-    padding-left: 8px; /* 박스와 살짝 여백 */
+    padding-left: 8px; 
   }
   
   .login-box {

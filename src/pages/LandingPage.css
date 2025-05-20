@@ -8,6 +8,12 @@
     flex-direction: column;
   }
   
+  .logo-image {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
   .logo-text {
     font-size: 80px;
     font-weight: 700;

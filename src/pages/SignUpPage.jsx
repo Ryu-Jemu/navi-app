@@ -1,28 +1,35 @@
 import React from 'react';
 import './SignUpPage.css';
+import logoImage from '../assets/logo.png'; // 로고 이미지 경로는 실제 위치에 맞게 조정
 
 const SignUpPage = () => {
   return (
     <div className="signup-container">
-      <h1 className="signup-logo">Navi</h1>
+      <img src={logoImage} alt="Navi Logo" className="signup-logo-img" />
 
       <form className="signup-form">
         <label>Student Name</label>
         <input type="text" placeholder="Enter your name" />
 
         <label>Nickname</label>
-        <input type="text" placeholder="Enter a nickname" />
+        <div className="input-wrapper">
+          <input type="text" placeholder="Enter a nickname" />
+        </div>
 
         <label>Country</label>
-        <select>
-          <option>China</option>
-          <option>Germany</option>
-          <option>USA</option>
-          <option>Korea</option>
-        </select>
+        <div className="input-wrapper">
+          <select>
+            <option>China</option>
+            <option>Germany</option>
+            <option>USA</option>
+            <option>Korea</option>
+          </select>
+        </div>
 
         <label>Student ID</label>
-        <input type="text" placeholder="10-digit number" />
+        <div className="input-wrapper">
+          <input type="text" placeholder="10-digit number" />
+        </div>
 
         <label>Password</label>
         <input type="password" placeholder="Enter password" />

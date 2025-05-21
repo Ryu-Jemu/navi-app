@@ -1,0 +1,99 @@
+.header
+.chat-box
+.todo-section
+.community-section{
+    width: 90%;
+    max-width: 380px;
+}
+
+.main-page {
+    padding-bottom: 80px; /* 하단 바와 겹치지 않게 여백 확보 */
+    font-family: 'Pretendard', sans-serif;
+    background-color: #fefefe;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .logo {
+    width: 36px;
+    margin-right: 12px;
+  }
+  
+  .chat-box {
+    background-color: var(--sub-yellow-1);
+    margin: 0 16px;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .chat-heading {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .chat-questions {
+    padding-left: 16px;
+    margin-bottom: 12px;
+    color: #444;
+  }
+  
+  .chat-button {
+    background-color: var(--main-yellow);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+    margin: 12px auto 0 auto;
+    text-align: center;
+  }
+  
+  .todo-section {
+    padding: 0 16px;
+    margin-bottom: 24px;
+  }
+  
+  .todo-cards {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  
+  .card {
+    background-color: #fffbea;
+    padding: 12px;
+    border-radius: 8px;
+    min-width: 120px;
+  }
+  
+  .date {
+    font-weight: bold;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  
+  .time {
+    font-size: 14px;
+    color: #000;
+  }
+  
+  .community-section {
+    padding: 0 16px;
+    margin-bottom: 80px;
+  }
+  
+  .community-placeholder {
+    background-color: #fff8e1;
+    border-radius: 8px;
+    height: 100px;
+  }

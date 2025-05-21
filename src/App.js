@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import FindPage from './pages/FindPage';
 import MainPage from './pages/MainPage';
+import CalendarPage from './pages/CalendarPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/find" element={<FindPage />} /> 
         <Route path="/main" element={<MainPage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
       </Routes>
     </Router>
   );

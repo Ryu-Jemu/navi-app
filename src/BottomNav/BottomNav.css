@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--white);
     border-top: 1px solid #ddd;
     z-index: 100;
   }
@@ -30,5 +30,5 @@
   
   .nav-item.home img {
     width: 36px;
-    height: 36px;
+    height: 30px;
   }

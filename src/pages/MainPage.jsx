@@ -8,8 +8,9 @@ const Main_Page = () => {
     <div className="main-page">
       <header className="header">
         <img src={logoImage} alt="Navi Logo" className="logo" />
-        <h2>AI Chat</h2>
       </header>
+
+      <h2 className="section-title">AI Chat</h2> {/* 변경된 위치 */}
 
       <section className="chat-box">
         <div className="chat-heading">📮 Need help with something?</div>
@@ -20,8 +21,9 @@ const Main_Page = () => {
         <button className="chat-button">Tap to start chatting with Navi</button>
       </section>
 
-      <section className="todo-section">
-        <h3>To do List</h3>
+      <h3 className="section-title">To do List</h3> {/* box 밖으로 이동 */}
+
+      <section className="todo-wrapper">
         <div className="todo-cards">
           <div className="card">
             <div className="date">May 20</div>
@@ -34,8 +36,9 @@ const Main_Page = () => {
         </div>
       </section>
 
+      <h3 className="section-title">Community</h3>
+
       <section className="community-section">
-        <h3>Community</h3>
         <div className="community-placeholder">
           {/* 커뮤니티 내용 자리 */}
         </div>

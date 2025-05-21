@@ -1,99 +1,117 @@
-.header
-.chat-box
-.todo-section
-.community-section{
-    width: 90%;
-    max-width: 380px;
+.header,
+.chat-box,
+.todo-wrapper,
+.community-section {
+  width: 90%;
+  max-width: 380px;
 }
 
 .main-page {
-    padding-bottom: 80px; /* 하단 바와 겹치지 않게 여백 확보 */
-    font-family: 'Pretendard', sans-serif;
-    background-color: #fefefe;
+  padding-bottom: 80px;
+  font-family: 'Pretendard', sans-serif;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .logo {
-    width: 36px;
-    margin-right: 12px;
-  }
-  
-  .chat-box {
-    background-color: var(--sub-yellow-1);
-    margin: 0 16px;
-    padding: 16px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-  }
-  
-  .chat-heading {
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  
-  .chat-questions {
-    padding-left: 16px;
-    margin-bottom: 12px;
-    color: #444;
-  }
-  
-  .chat-button {
-    background-color: var(--main-yellow);
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    display: block;
-    margin: 12px auto 0 auto;
-    text-align: center;
-  }
-  
-  .todo-section {
-    padding: 0 16px;
-    margin-bottom: 24px;
-  }
-  
-  .todo-cards {
-    display: flex;
-    gap: 12px;
-    margin-top: 8px;
-  }
-  
-  .card {
-    background-color: #fffbea;
-    padding: 12px;
-    border-radius: 8px;
-    min-width: 120px;
-  }
-  
-  .date {
-    font-weight: bold;
-    color: var(--red);
-    margin-bottom: 4px;
-  }
-  
-  .time {
-    font-size: 14px;
-    color: #000;
-  }
-  
-  .community-section {
-    padding: 0 16px;
-    margin-bottom: 80px;
-  }
-  
-  .community-placeholder {
-    background-color: #fff8e1;
-    border-radius: 8px;
-    height: 100px;
-  }
+/* 로고만 중앙 정렬 */
+.header {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+}
+
+/* ✅ 공통 섹션 제목 스타일 (AI Chat, To do List, Community) */
+.section-title {
+  width: 90%;
+  max-width: 380px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 24px 0 8px 0;
+}
+
+/* Chat 박스 */
+.chat-box {
+  background-color: var(--sub-yellow-1);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.chat-heading {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.chat-questions {
+  padding-left: 16px;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.chat-button {
+  background-color: var(--main-yellow);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  display: block;
+  margin: 12px auto 0 auto;
+  text-align: center;
+}
+
+/* To do 노란 박스 */
+.todo-wrapper {
+  background-color: var(--sub-yellow-1);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-cards {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.card {
+  background-color: #fdfdfd;
+  padding: 12px;
+  border-radius: 8px;
+  min-width: 120px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.08);
+
+}
+
+.date {
+  font-weight: bold;
+  color: var(--red);
+  margin-bottom: 4px;
+}
+
+.time {
+  font-size: 14px;
+  color: #000;
+}
+
+.community-section {
+  margin-bottom: 80px;
+}
+
+.community-placeholder {
+  background-color: var(--sub-yellow-1);
+  border-radius: 8px;
+  height: 100px;
+}

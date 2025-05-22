@@ -6,6 +6,7 @@ import SignUpPage from './pages/SignUpPage';
 import FindPage from './pages/FindPage';
 import MainPage from './pages/MainPage';
 import CalendarPage from './pages/CalendarPage';
+import BoardPage from './pages/BoardPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/find" element={<FindPage />} /> 
         <Route path="/main" element={<MainPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/board" element={<BoardPage />} />
       </Routes>
     </Router>
   );

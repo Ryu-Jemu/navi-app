@@ -34,7 +34,7 @@ const SignUpPage = () => {
       const result = await signup({ name, nickname, country, studentId, password, email });
       if (result.success) {
         alert('Signup successful. Please log in.');
-        navigate('/sign-in');
+        setTimeout (() => navigate('/login'));
       } else {
         alert('Signup failed: ' + result.message);
       }

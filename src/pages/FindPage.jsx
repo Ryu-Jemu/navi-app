@@ -15,7 +15,7 @@ const FindPage = () => {
       const result = await findPassword({ studentId, email });
       if (result.success) {
         alert('Temporary password has been sent to your email.');
-        navigate('/login');
+        setTimeout(() => navigate('/login'));
       } else {
         alert('Failed to find password: ' + result.message);
       }

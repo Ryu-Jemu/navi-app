@@ -1,5 +1,5 @@
 // src/api/auth.js
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'http://localhost:3000/api';
 
 export async function login({ studentId, password }) {
     const res = await fetch(`${API_URL}/login`, {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './BoardPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import LogoImage from '../assets/logo.png';
@@ -8,6 +9,7 @@ import FileImage from '../assets/File_Icon.png';
 
 const BoardPage = () => {
   const [language, setLanguage] = useState('English');
+  const navigate = useNavigate();
 
   const menuItems = {
     English: ['My Posts', 'Commented', 'Scrap', 'Free Board'],
@@ -52,7 +54,10 @@ const BoardPage = () => {
         ))}
       </div>
 
-      <button className="add-post-button">
+      <button
+        className="add-post-button"
+        onClick={() => navigate('/addpost')}
+      >
         {language === 'English' ? 'Add Post' : '添加帖子'}
       </button>
 

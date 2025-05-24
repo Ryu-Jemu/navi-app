@@ -7,6 +7,7 @@ import FindPage from './pages/FindPage';
 import MainPage from './pages/MainPage';
 import CalendarPage from './pages/CalendarPage';
 import BoardPage from './pages/BoardPage';
+import AddPostPage from './pages/AddPostPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/board" element={<BoardPage />} />
+        <Route path="/addpost" element={<AddPostPage />} />
       </Routes>
     </Router>
   );

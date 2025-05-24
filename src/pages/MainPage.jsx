@@ -3,12 +3,10 @@ import './MainPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import logoImage from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'; 
 
 const Main_Page = () => {
   const navigate = useNavigate();
   
-  const navigate = useNavigate();
   return (
     <div className="main-page">
       <header className="header">

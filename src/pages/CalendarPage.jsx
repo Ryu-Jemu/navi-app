@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './CalendarPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
@@ -8,6 +8,7 @@ import PlusIcon from '../assets/Plus_Icon.png';
 const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
+
   const todayObj = new Date();
   const todayDate = todayObj.getDate();
   const todayMonth = todayObj.getMonth();
@@ -94,6 +95,9 @@ const CalendarPage = () => {
             <div className="no-task">Please select a date to see tasks.</div>
           )}
         </div>
+      </div>
+
+      <div className="plus-button-container">
         <img src={PlusIcon} alt="Add Task" className="plus-button" />
       </div>
 

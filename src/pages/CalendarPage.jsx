@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './CalendarPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
@@ -8,13 +8,11 @@ import PlusIcon from '../assets/Plus_Icon.png';
 const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
-  const todayObj = new Date();
-  const todayDate = todayObj.getDate();
-  const todayMonth = todayObj.getMonth();
-  const todayYear = todayObj.getFullYear();
+  const [selectedFilter, setSelectedFilter] = useState(null); // 'VISA' or 'USIM'
 
   const year = 2025;
   const month = 4; // 5월 (주의: 0부터 시작)
+  const today = new Date();
 
   const firstDay = new Date(year, month, 1).getDay();
   const totalDays = new Date(year, month + 1, 0).getDate();
@@ -27,15 +25,25 @@ const CalendarPage = () => {
     calendarCells.push(i);
   }
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
+  const toggleMenu = () => setShowMenu(!showMenu);
+
+  const handleFilterClick = (filter) => {
+    if (selectedFilter === filter) {
+      setSelectedFilter(null); // 같은 걸 누르면 해제
+    } else {
+      setSelectedFilter(filter);
+    }
   };
 
   return (
     <div className="calendar-page">
       <header className="calendar-header">
         <img src={ProfileIcon} alt="Profile" className="icon profile" />
-        <div className="month-text">{year}<br /><span>MAY</span></div>
+        <div className="month-text">
+          {year}
+          <br />
+          <span>MAY</span>
+        </div>
         <div className="menu-container">
           <img
             src={MoreIcon}
@@ -45,8 +53,18 @@ const CalendarPage = () => {
           />
           {showMenu && (
             <div className="dropdown-menu">
-              <div className="dropdown-item">VISA</div>
-              <div className="dropdown-item">USIM</div>
+              <div
+                className={`dropdown-item ${selectedFilter === 'VISA' ? 'active' : ''}`}
+                onClick={() => handleFilterClick('VISA')}
+              >
+                VISA
+              </div>
+              <div
+                className={`dropdown-item ${selectedFilter === 'USIM' ? 'active' : ''}`}
+                onClick={() => handleFilterClick('USIM')}
+              >
+                USIM
+              </div>
             </div>
           )}
         </div>
@@ -62,8 +80,8 @@ const CalendarPage = () => {
         {calendarCells.map((day, i) => (
           <div
             key={i}
-            className={`day-cell 
-              ${day === todayDate && month === todayMonth && year === todayYear ? 'today' : ''}
+            className={`day-cell
+              ${day === today.getDate() && month === today.getMonth() && year === today.getFullYear() ? 'today' : ''}
               ${selectedDate === day ? 'selected' : ''}
               ${day === null ? 'empty' : ''}
             `}

@@ -18,7 +18,7 @@ const Main_Page = () => {
           <li>📩 How do I extend my visa?</li>
           <li>📩 How do I open a bank account?</li>
         </ul>
-        <button className="chat-button">Tap to start chatting with Navi</button>
+        <button NavLinkto = "/chat" className="chat-button">Tap to start chatting with Navi</button>
       </section>
 
       <h3 className="section-title">To do List</h3> {/* box 밖으로 이동 */}

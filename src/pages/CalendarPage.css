@@ -4,6 +4,7 @@
     padding-bottom: 80px;
   }
   
+  /* 헤더 */
   .calendar-header {
     background-color: var(--main-yellow);
     display: flex;
@@ -35,6 +36,7 @@
     font-size: 22px;
   }
   
+  /* 요일 라벨 */
   .weekday-row {
     display: flex;
     justify-content: space-around;
@@ -51,6 +53,7 @@
     color: blue;
   }
   
+  /* 달력 그리드 */
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -70,6 +73,7 @@
     font-weight: bold;
   }
   
+  /* Today Section */
   .today-section {
     padding: 16px;
     position: relative;
@@ -99,6 +103,7 @@
     border-color: #f26d6d;
   }
   
+  /* + 버튼 */
   .plus-button {
     position: absolute;
     bottom: -80px;

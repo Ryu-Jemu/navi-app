@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './CalendarPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
@@ -6,12 +6,50 @@ import MoreIcon from '../assets/More_Icon.png';
 import PlusIcon from '../assets/Plus_Icon.png';
 
 const CalendarPage = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const todayObj = new Date();
+  const todayDate = todayObj.getDate();
+  const todayMonth = todayObj.getMonth();
+  const todayYear = todayObj.getFullYear();
+
+  const year = 2025;
+  const month = 4; // 5월 (주의: 0부터 시작)
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const totalDays = new Date(year, month + 1, 0).getDate();
+
+  const calendarCells = [];
+  for (let i = 0; i < firstDay; i++) {
+    calendarCells.push(null);
+  }
+  for (let i = 1; i <= totalDays; i++) {
+    calendarCells.push(i);
+  }
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <div className="calendar-page">
       <header className="calendar-header">
         <img src={ProfileIcon} alt="Profile" className="icon profile" />
-        <div className="month-text">2025<br /><span>MAY</span></div>
-        <img src={MoreIcon} alt="More" className="icon menu" />
+        <div className="month-text">{year}<br /><span>MAY</span></div>
+        <div className="menu-container">
+          <img
+            src={MoreIcon}
+            alt="More"
+            className="icon menu"
+            onClick={toggleMenu}
+          />
+          {showMenu && (
+            <div className="dropdown-menu">
+              <div className="dropdown-item">VISA</div>
+              <div className="dropdown-item">USIM</div>
+            </div>
+          )}
+        </div>
       </header>
 
       <div className="weekday-row">
@@ -21,22 +59,40 @@ const CalendarPage = () => {
       </div>
 
       <div className="calendar-grid">
-        {[...Array(31)].map((_, i) => (
-          <div key={i} className={`day-cell ${i === 13 ? 'today' : ''}`}>
-            {i + 1}
+        {calendarCells.map((day, i) => (
+          <div
+            key={i}
+            className={`day-cell 
+              ${day === todayDate && month === todayMonth && year === todayYear ? 'today' : ''}
+              ${selectedDate === day ? 'selected' : ''}
+              ${day === null ? 'empty' : ''}
+            `}
+            onClick={() => day && setSelectedDate(day)}
+          >
+            {day || ''}
           </div>
         ))}
       </div>
 
       <div className="today-section">
-        <h3>Today</h3>
+        <h3>
+          {selectedDate
+            ? `${year}.05.${selectedDate < 10 ? '0' : ''}${selectedDate}`
+            : 'Select a date'}
+        </h3>
         <div className="task-list">
-          <div className="task-card">
-            <span role="img" aria-label="assignment">📄</span> Assignment_06
-          </div>
-          <div className="task-card urgent">
-            <span role="img" aria-label="visa">📌</span> Visa renewal
-          </div>
+          {selectedDate ? (
+            <>
+              <div className="task-card">
+                <span role="img" aria-label="task">📄</span> Task for {selectedDate}
+              </div>
+              <div className="task-card urgent">
+                <span role="img" aria-label="urgent">📌</span> Urgent task for {selectedDate}
+              </div>
+            </>
+          ) : (
+            <div className="no-task">Please select a date to see tasks.</div>
+          )}
         </div>
         <img src={PlusIcon} alt="Add Task" className="plus-button" />
       </div>

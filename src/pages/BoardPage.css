@@ -1,88 +1,83 @@
 .board-page {
-    background-color: var(--black);
-    color: white;
-    min-height: 100vh;
-    padding-bottom: 80px;
-    font-family: 'Pretendard', sans-serif;
-  }
-  
-  .board-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-  }
-  
-  .logo-text {
-    color: var(--main-yellow);
-    font-size: 20px;
-    font-weight: 600;
-  }
-  
-  .board-title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .header-icons img {
-    width: 20px;
-    margin-left: 16px;
-  }
-  
-  .language-tabs {
-    display: flex;
-    justify-content: center;
-    background-color: var(--navy);
-    padding: 12px 0;
-    gap: 40px;
-    font-weight: 500;
-  }
-  
-  .tab {
-    color: white;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 4px;
-  }
-  
-  .tab.active {
-    border-color: white;
-  }
-  
-  .board-menu {
-    background-color: var(--sub-gray);
-    margin: 16px;
-    padding: 16px;
-    border-radius: 12px;
-  }
-  
-  .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  
-  .menu-item img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .divider {
-    border: none;
-    border-top: 1px solid var(--gray-2);
-    margin: 8px 0;
-  }
-  
-  .add-post-button {
-    background-color: white;
-    color: var(--black);
-    font-weight: 600;
-    font-size: 16px;
-    padding: 12px 24px;
-    border-radius: 10px;
-    border: none;
-    display: block;
-    margin: 20px auto 0;
-    cursor: pointer;
-  }
+  background-color: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  padding-bottom: 80px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.logo {
+  width: 36px;
+}
+
+.board-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header-icons img {
+  width: 24px;
+  margin-left: 16px;
+}
+
+.language-tabs {
+  display: flex;
+  justify-content: center;
+  background-color: var(--white);
+  padding: 12px 0;
+  gap: 40px;
+  font-weight: 500;
+}
+
+.tab {
+  color: var(--black);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+
+.tab.active {
+  border-color: var(--black);
+}
+
+.board-menu {
+  background-color: var(--sub-yellow-1);
+  margin: 16px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.menu-item img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(89%) saturate(609%) hue-rotate(359deg) brightness(101%) contrast(103%);
+}
+
+.add-post-button {
+  background-color: var(--main-yellow);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  margin: 20px auto 0;
+  cursor: pointer;
+  width: 90%;
+  max-width: 320px;
+}

@@ -15,7 +15,6 @@
   align-items: center;
 }
 
-/* 로고만 중앙 정렬 */
 .header {
   display: flex;
   justify-content: center;
@@ -27,7 +26,6 @@
   height: auto;
 }
 
-/* ✅ 공통 섹션 제목 스타일 (AI Chat, To do List, Community) */
 .section-title {
   width: 90%;
   max-width: 380px;
@@ -37,7 +35,6 @@
   margin: 24px 0 8px 0;
 }
 
-/* Chat 박스 */
 .chat-box {
   background-color: var(--sub-yellow-1);
   padding: 16px;

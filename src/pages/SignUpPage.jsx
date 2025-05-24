@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUpPage.css';
-import logoImage from '../assets/logo.png'; // 로고 이미지 경로는 실제 위치에 맞게 조정
+import logoImage from '../assets/logo.png'; 
 
 const SignUpPage = () => {
   return (

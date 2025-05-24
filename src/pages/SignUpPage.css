@@ -52,7 +52,7 @@
 .signup-form .input-wrapper input,
 .signup-form .input-wrapper select {
   width: 100%;
-  padding-right: 36px; /* 아이콘 자리 확보 */
+  padding-right: 36px; 
   box-sizing: border-box;
 }
 

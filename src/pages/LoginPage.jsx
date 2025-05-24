@@ -7,9 +7,9 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // 폼 제출 시 새로고침 방지
-    // TODO: 로그인 인증 로직 삽입 가능
-    navigate('/main'); // MainPage로 이동
+    e.preventDefault(); 
+    
+    navigate('/main'); 
   };
 
   return (

@@ -76,3 +76,39 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.signup-container {
+  position: relative; /* X 버튼 absolute용 */
+  background-color: var(--white);
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Pretendard', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.signup-form-wrapper {
+  position: relative; /* X 버튼 포지셔닝 기준 */
+  width: 340px;
+}
+
+.close-button {
+  position: absolute;
+  top: -50px;       /* 박스 위로 살짝 띄움 */
+  right: -28px;     /* 박스 오른쪽으로 살짝 띄움 */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+}

@@ -9,6 +9,7 @@ import ChatPage from './pages/ChatPage';
 import CalendarPage from './pages/CalendarPage';
 import BoardPage from './pages/BoardPage';
 import AddPostPage from './pages/AddPostPage';
+import OnboardingPage from './pages/OnboardingPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/board" element={<BoardPage />} />
         <Route path="/addpost" element={<AddPostPage />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path='/onboarding' element={<OnboardingPage />} />
       </Routes>
     </Router>
   );

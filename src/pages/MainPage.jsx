@@ -2,16 +2,29 @@ import React from 'react';
 import './MainPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import logoImage from '../assets/logo.png';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 
 const Main_Page = () => {
   const navigate = useNavigate();
   
+=======
+import { useNavigate } from 'react-router-dom'; 
+
+const Main_Page = () => {
+  const navigate = useNavigate();
+>>>>>>> Login_Page
   return (
     <div className="main-page">
       <header className="header">
-        <img src={logoImage} alt="Navi Logo" className="logo" />
-      </header>
+      <img
+        src={logoImage}
+        alt="Navi Logo"
+        className="logo"
+        onClick={() => navigate('/')} // 클릭 시 /로 이동
+        style={{ cursor: 'pointer' }}  // 클릭 가능한 커서 모양
+/>     
+        </header>
 
       <h2 className="section-title">AI Chat</h2> {/* 변경된 위치 */}
 

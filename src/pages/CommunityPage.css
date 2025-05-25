@@ -1,0 +1,154 @@
+.community-container {
+  font-family: 'Pretendard', sans-serif;
+  background-color: var(--white);
+  padding: 16px;
+}
+
+.community-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.community-logo {
+  width: 40px;
+  height: auto;
+  margin-bottom: 4px;
+}
+
+.community-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px; /* 프로필과 버튼 사이 간격 */
+}
+
+.profile-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+}
+
+.add-post-button {
+  background-color: var(--main-yellow);
+  color: var(--black);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top:14px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--gray-2);
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.search-bar input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+}
+
+.ad-banner {
+  background-color: #c4c4c4;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 30px;
+  padding: 12px;
+  width: 80%; /* 또는 max-width: 500px; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85px;
+}
+.tab-menu {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--black);
+}
+
+.tab-button.active {
+  background-color: var(--navy);
+  color: var(--white);
+  border-radius: 16px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.no-posts {
+  text-align: center;
+  color: var(--gray-1);
+}
+
+.post-card {
+  background-color: var(--gray-2);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--sub-gray);
+}
+
+.post-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.post-content {
+  font-size: 14px;
+}
+
+.delete-button {
+  margin-top: 8px;
+  background-color: #f26d6d;
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}

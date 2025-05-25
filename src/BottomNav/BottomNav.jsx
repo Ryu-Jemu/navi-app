@@ -10,9 +10,9 @@ import MoreIcon from '../assets/More_Icon.png';
 const BottomNav = () => {
   return (
     <div className="bottom-nav">
-      <NavLink to="/board" className="nav-item">
+      <NavLink to="/community" className="nav-item">
         <img src={BoardIcon} alt="Board" />
-        <span>BOARD</span>
+        <span>COMMUNITY</span>
       </NavLink>
       <NavLink to="/chat" className="nav-item">
         <img src={ChatIcon} alt="Chat" />

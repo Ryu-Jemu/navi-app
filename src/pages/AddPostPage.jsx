@@ -1,70 +1,79 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddPostPage.css';
-import BottomNav from '../BottomNav/BottomNav';
-import LogoImage from '../assets/logo.png';
+import closeIcon from '../assets/X.png';
+import cameraIcon from '../assets/Photo-Icon.png';
 
 const AddPostPage = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const navigate = useNavigate();
+  const [isAnon, setIsAnon] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handlePost = () => {
     if (!title.trim() || !content.trim()) {
-      alert('Please fill in both title and content.');
+      alert('Please enter both title and content.');
       return;
     }
-    // TODO: 서버 전송 or 상태 업데이트 추가
-    console.log('Submitted Title:', title);
-    console.log('Submitted Content:', content);
-    alert('Post submitted successfully!');
-    setTitle('');
-    setContent('');
-    navigate('/board'); // 제출 후 게시판으로 이동
-  };
 
-  const handleCancel = () => {
-    if (window.confirm('Are you sure you want to cancel?')) {
-      navigate('/board');
-    }
+    const newPost = {
+      id: Date.now(),
+      title,
+      content,
+      isAnon,
+      date: new Date().toLocaleString(),
+    };
+
+    const existingPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
+    const updatedPosts = [newPost, ...existingPosts];
+    localStorage.setItem('communityPosts', JSON.stringify(updatedPosts));
+
+    navigate('/community');
   };
 
   return (
-    <div className="add-post-page">
-      <header className="add-post-header">
-        <img src={LogoImage} alt="Logo" className="logo" />
-        <h2 className="header-title">Community</h2>
-      </header>
-
-      <form className="post-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter post title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="post-input"
-          required
+    <div className="addpost-container">
+      <div className="addpost-header">
+        <img
+          src={closeIcon}
+          alt="Close"
+          className="close-icon"
+          onClick={() => navigate('/community')}
         />
+        <h2 className="addpost-title">Add Post</h2>
+      </div>
+
+      <input
+        className="addpost-input"
+        type="text"
+        placeholder="Write title..."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <div className="textarea-wrapper">
         <textarea
-          placeholder="Write your content here..."
+          className="addpost-textarea"
+          placeholder="Share anything on your mind..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="post-textarea"
-          required
-        ></textarea>
+        />
+        <img src={cameraIcon} alt="Camera" className="camera-icon" />
+      </div>
 
-        <div className="button-group">
-          <button type="submit" className="submit-button">
-            Submit Post
-          </button>
-          <button type="button" className="cancel-button" onClick={handleCancel}>
-            Cancel
-          </button>
-        </div>
-      </form>
+      <div className="addpost-options">
+        <label className="anon-label">
+          <input
+            type="checkbox"
+            checked={isAnon}
+            onChange={(e) => setIsAnon(e.target.checked)}
+          />
+          Anon
+        </label>
+      </div>
 
-      <BottomNav />
+      <button className="addpost-button" onClick={handlePost}>
+        POST
+      </button>
     </div>
   );
 };

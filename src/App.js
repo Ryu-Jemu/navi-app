@@ -7,7 +7,7 @@ import FindPage from './pages/FindPage';
 import MainPage from './pages/MainPage';
 import ChatPage from './pages/ChatPage';
 import CalendarPage from './pages/CalendarPage';
-import BoardPage from './pages/BoardPage';
+import BoardPage from './pages/CommunityPage';
 import AddPostPage from './pages/AddPostPage';
 import OnboardingPage from './pages/OnboardingPage';
 
@@ -21,7 +21,7 @@ function App() {
         <Route path="/find" element={<FindPage />} /> 
         <Route path="/main" element={<MainPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/board" element={<BoardPage />} />
+        <Route path="/community" element={<BoardPage />} />
         <Route path="/addpost" element={<AddPostPage />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path='/onboarding' element={<OnboardingPage />} />

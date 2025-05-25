@@ -2,18 +2,11 @@ import React from 'react';
 import './MainPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import logoImage from '../assets/logo.png';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 
 const Main_Page = () => {
   const navigate = useNavigate();
   
-=======
-import { useNavigate } from 'react-router-dom'; 
-
-const Main_Page = () => {
-  const navigate = useNavigate();
->>>>>>> Login_Page
   return (
     <div className="main-page">
       <header className="header">

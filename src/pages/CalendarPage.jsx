@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import './CalendarPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
-import MoreIcon from '../assets/More_Icon.png';
+import ListIcon from '../assets/List_Icon.png';
 import PlusIcon from '../assets/Plus_Icon.png';
 
 const CalendarPage = () => {
+  const today = new Date();
+  const [currentYear, setCurrentYear] = useState(today.getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [selectedDate, setSelectedDate] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(null); // 'VISA' or 'USIM'
+  // eslint-disable-next-line
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
-  const year = 2025;
-  const month = 4; // 5월 (주의: 0부터 시작)
-  const today = new Date();
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const totalDays = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
 
   const calendarCells = [];
   for (let i = 0; i < firstDay; i++) {
@@ -28,47 +28,64 @@ const CalendarPage = () => {
   const toggleMenu = () => setShowMenu(!showMenu);
 
   const handleFilterClick = (filter) => {
-    if (selectedFilter === filter) {
-      setSelectedFilter(null); // 같은 걸 누르면 해제
-    } else {
-      setSelectedFilter(filter);
-    }
+    alert(`Selected: ${filter}`);
+    setSelectedFilter(filter);
+    setShowMenu(false);
   };
+
+  const handlePrevMonth = () => {
+    if (currentMonth === 0) {
+      setCurrentYear(currentYear - 1);
+      setCurrentMonth(11);
+    } else {
+      setCurrentMonth(currentMonth - 1);
+    }
+    setSelectedDate(null);
+  };
+
+  const handleNextMonth = () => {
+    if (currentMonth === 11) {
+      setCurrentYear(currentYear + 1);
+      setCurrentMonth(0);
+    } else {
+      setCurrentMonth(currentMonth + 1);
+    }
+    setSelectedDate(null);
+  };
+
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
   return (
     <div className="calendar-page">
       <header className="calendar-header">
         <img src={ProfileIcon} alt="Profile" className="icon profile" />
-        <div className="month-text">
-          {year}
-          <br />
-          <span>MAY</span>
-        </div>
         <div className="menu-container">
-          <img
-            src={MoreIcon}
-            alt="More"
-            className="icon menu"
-            onClick={toggleMenu}
-          />
+          <img src={ListIcon} alt="More" className="icon menu" onClick={toggleMenu} />
           {showMenu && (
-            <div className="dropdown-menu">
-              <div
-                className={`dropdown-item ${selectedFilter === 'VISA' ? 'active' : ''}`}
-                onClick={() => handleFilterClick('VISA')}
-              >
+            <div className="popup-menu">
+              <div className="popup-item" onClick={() => handleFilterClick('VISA')}>
                 VISA
               </div>
-              <div
-                className={`dropdown-item ${selectedFilter === 'USIM' ? 'active' : ''}`}
-                onClick={() => handleFilterClick('USIM')}
-              >
+              <div className="popup-item" onClick={() => handleFilterClick('USIM')}>
                 USIM
               </div>
             </div>
           )}
         </div>
       </header>
+
+      <div className="month-navigation">
+        <button onClick={handlePrevMonth} className="arrow-button">◀</button>
+        <div className="month-text">
+          {currentYear}
+          <br />
+          <span>{monthNames[currentMonth]}</span>
+        </div>
+        <button onClick={handleNextMonth} className="arrow-button">▶</button>
+      </div>
 
       <div className="weekday-row">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, idx) => (
@@ -81,7 +98,11 @@ const CalendarPage = () => {
           <div
             key={i}
             className={`day-cell
-              ${day === today.getDate() && month === today.getMonth() && year === today.getFullYear() ? 'today' : ''}
+              ${day === today.getDate() &&
+              currentMonth === today.getMonth() &&
+              currentYear === today.getFullYear()
+                ? 'today'
+                : ''}
               ${selectedDate === day ? 'selected' : ''}
               ${day === null ? 'empty' : ''}
             `}
@@ -95,7 +116,7 @@ const CalendarPage = () => {
       <div className="today-section">
         <h3>
           {selectedDate
-            ? `${year}.05.${selectedDate < 10 ? '0' : ''}${selectedDate}`
+            ? `${currentYear}.${(currentMonth + 1).toString().padStart(2, '0')}.${selectedDate.toString().padStart(2, '0')}`
             : 'Select a date'}
         </h3>
         <div className="task-list">
@@ -112,7 +133,9 @@ const CalendarPage = () => {
             <div className="no-task">Please select a date to see tasks.</div>
           )}
         </div>
-        <img src={PlusIcon} alt="Add Task" className="plus-button" />
+        <div className="plus-button-container">
+          <img src={PlusIcon} alt="Add Task" className="plus-button" />
+        </div>
       </div>
 
       <BottomNav />

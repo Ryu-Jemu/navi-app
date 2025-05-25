@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CommunityPage.css';
+import BottomNav from '../BottomNav/BottomNav';
 import logoImage from '../assets/logo.png';
 import profileIcon from '../assets/Profile_Icon.png';
 
@@ -80,6 +81,7 @@ const CommunityPage = () => {
           ))
         )}
       </div>
+      <BottomNav />
     </div>
   );
 };

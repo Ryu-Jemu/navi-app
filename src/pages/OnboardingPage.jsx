@@ -35,7 +35,7 @@ const OnboardingPage = () => {
   }, []);
 
   const handleStartClick = () => {
-    navigate('/main');
+    navigate('/login');
   };
 
   return (

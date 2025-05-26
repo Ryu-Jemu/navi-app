@@ -9,7 +9,7 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); 
     
-    navigate('/onboarding'); 
+    navigate('/main'); 
   };
 
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import './BottomNav.css';
 import { NavLink } from 'react-router-dom';
-import BoardIcon from '../assets/Board_Icon.png';
-import ChatIcon from '../assets/Chat_Icon.png';
-import HomeIcon from '../assets/logo.png';
+import CommunityIcon from '../assets/Community_Icon.png';
+import ChatIcon from '../assets/AI_Chat_Icon.png';
+import HomeIcon from '../assets/Home_Icon.png';
 import CalendarIcon from '../assets/Calendar_Icon.png';
 import MoreIcon from '../assets/More_Icon.png';
 
@@ -11,7 +11,7 @@ const BottomNav = () => {
   return (
     <div className="bottom-nav">
       <NavLink to="/community" className="nav-item">
-        <img src={BoardIcon} alt="Board" />
+        <img src={CommunityIcon} alt="Board" />
         <span>COMMUNITY</span>
       </NavLink>
       <NavLink to="/chat" className="nav-item">

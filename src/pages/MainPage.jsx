@@ -46,7 +46,7 @@ const Main_Page = () => {
         </div>
       </section>
 
-      <h3 className="section-title">Community</h3>
+      <h3 className="section-title">What's hot today?</h3>
 
       <section className="community-section">
         <div className="community-placeholder">

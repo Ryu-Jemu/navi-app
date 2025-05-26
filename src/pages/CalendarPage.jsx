@@ -4,8 +4,8 @@ import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
 import ListIcon from '../assets/List_Icon.png';
 import PlusIcon from '../assets/Plus_Icon.png';
-import MoveLeftIcon from '../assets/MoveLeft_Icon'
-import MoveRightIcon from '../assets/MoveRight_Icon'
+import MoveLeftIcon from '../assets/MoveLeft_Icon.png'
+import MoveRightIcon from '../assets/MoveRight_Icon.png'
 
 const CalendarPage = () => {
   const today = new Date();

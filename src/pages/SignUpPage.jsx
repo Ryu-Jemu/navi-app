@@ -1,8 +1,6 @@
 import React from 'react';
 import './SignUpPage.css';
-import logoImage from '../assets/logo.png';
 import xImage from '../assets/X.png';
-import { useNavigate } from 'react-router-dom';
 import logoImage from '../assets/logo.png'; // 로고 이미지 경로는 실제 위치에 맞게 조정
 import { useNavigate } from 'react-router-dom';
 import { signup } from '../api/auth';

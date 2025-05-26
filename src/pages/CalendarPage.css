@@ -1,7 +1,7 @@
 .calendar-page {
   font-family: 'Pretendard', sans-serif;
   background-color: var(--white);
-  padding-bottom: 80px;
+  padding-bottom: 100%;
 }
 
 /* 헤더 */

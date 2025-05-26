@@ -10,6 +10,7 @@ import CalendarPage from './pages/CalendarPage';
 import BoardPage from './pages/CommunityPage';
 import AddPostPage from './pages/AddPostPage';
 import OnboardingPage from './pages/OnboardingPage';
+import PostDetailPage from './pages/PostDetailPage';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route path="/community" element={<BoardPage />} />
         <Route path="/addpost" element={<AddPostPage />} />
         <Route path="/chat" element={<ChatPage />} />
-        <Route path='/onboarding' element={<OnboardingPage />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/post/:id" element={<PostDetailPage />} />
       </Routes>
     </Router>
   );

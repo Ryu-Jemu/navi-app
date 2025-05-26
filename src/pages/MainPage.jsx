@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './MainPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import logoImage from '../assets/logo.png';
+import HeartIcon from '../assets/Heart_Icon.png';
+import CommentIcon from '../assets/Comment_Icon.png'
 import { useNavigate } from 'react-router-dom';
 
 const Main_Page = () => {
   const navigate = useNavigate();
   const [latestPosts, setLatestPosts] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
-
+  
   useEffect(() => {
     // 커뮤니티 최신 글 3개
     const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
@@ -84,14 +86,26 @@ const Main_Page = () => {
           <p className="no-posts">No posts available.</p>
         ) : (
           latestPosts.map(post => (
-            <div key={post.id} className="hot-post-card">
-              <div className="post-header">
-                <span>{post.date}</span>
+            <div
+              key={post.id}
+              className="hot-post-card"
+              onClick={() => navigate(`/post/${post.id}`)}
+              style={{ cursor: 'pointer' }}
+            >
+              <h4 className="hot-post-title">{post.title}</h4>
+              <div className="hot-post-content-box">
+                <p className="hot-post-content">
+                  {post.content.length > 50 ? `${post.content.slice(0, 50)}...` : post.content}
+                </p>
               </div>
-              <h4 className="post-title">{post.title}</h4>
-              <p className="post-content">
-                {post.content.length > 50 ? `${post.content.slice(0, 50)}...` : post.content}
-              </p>
+              <div className="hot-post-stats">
+                <span className="stat">
+                  <img src={HeartIcon} alt="Like" />{post.likes || 0}
+                </span>
+                <span className="stat">
+                <img src={CommentIcon} alt="comments" />{post.comments ? post.comments.length : 0}
+                </span>
+              </div>
             </div>
           ))
         )}

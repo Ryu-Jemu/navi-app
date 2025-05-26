@@ -55,9 +55,7 @@
 
 .button-group {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 300px;
+  gap: 200px;
 }
 
 button.back-button {
@@ -75,7 +73,7 @@ button.back-button {
   background-color: var(--navy);
   color: var(--white);
   font-size: 20px;
-  padding: 2px 32px;
+  padding: 6px 32px;
   border: none;
   border-radius: 20px;
   cursor: pointer;

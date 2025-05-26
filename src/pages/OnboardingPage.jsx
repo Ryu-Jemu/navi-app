@@ -1,68 +1,101 @@
-import React, { useRef, useEffect, useState } from 'react';
-import Slider from 'react-slick';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './OnboardingPage.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
+import CalendarImage from '../assets/onboarding-calendar.png';
+import ChatbotImage from '../assets/onboarding-chat.png';
+import CommunityImage from '../assets/onboarding-community.png';
+
+const slides = [
+  {
+    title: 'Never miss a deadline',
+    description: (
+      <>
+        Track visa renewals, school schedules,<br />
+        and more — <br />
+        all in one calendar, just for you.
+      </>
+    ),
+    image: CalendarImage,
+  },
+  {
+    title: 'AI Chatbot',
+    description: (
+      <>
+        Confused about life in Korea?<br />
+        Our smart chatbot gives real-time<br />
+        answers in your language.
+      </>
+    ),
+    image: ChatbotImage,
+  },
+  {
+    title: 'Community',
+    description: (
+      <>
+        Connect with other international students,<br />
+        share tips, and find support<br />
+        from your community.
+      </>
+    ),
+    image: CommunityImage,
+  },
+];
 
 const OnboardingPage = () => {
   const navigate = useNavigate();
-  const sliderRef = useRef(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    swipe: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dotsClass: 'slick-dots custom-dots',
-    afterChange: (index) => setCurrentSlide(index),
+  const handleNext = () => {
+    if (currentIndex < slides.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') {
-        sliderRef.current?.slickNext();
-      } else if (e.key === 'ArrowLeft') {
-        sliderRef.current?.slickPrev();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  const handleBack = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
-  const handleStartClick = () => {
+  const handleStart = () => {
     navigate('/login');
   };
 
   return (
     <div className="onboarding-container">
-      <Slider ref={sliderRef} {...settings}>
-        <div className="slide">
-          <div className="indicator-space"></div>
-          <h2>필요한 일정</h2>
-          <p>쉽게 일정 관리하세요.</p>
-        </div>
-        <div className="slide">
-          <div className="indicator-space"></div>
-          <h2>AI Chat봇</h2>
-          <p>AI가 질문에 답변해줍니다.</p>
-        </div>
-        <div className="slide">
-          <div className="indicator-space"></div>
-          <h2>커뮤니티</h2>
-          <p>학생들과 자유롭게 소통하세요.</p>
-        </div>
-      </Slider>
 
-      {currentSlide === 2 && (
-        <button className="start-button" onClick={handleStartClick}>
-          시작하기
-        </button>
-      )}
+      <div className="dot-indicator">
+        {slides.map((_, idx) => (
+          <div
+            key={idx}
+            className={`dot ${idx === currentIndex ? 'active' : ''}`}
+          />
+        ))}
+      </div>
+
+      <div className="slide-content">
+        <h2>{slides[currentIndex].title}</h2>
+        <p>{slides[currentIndex].description}</p>
+        <img src={slides[currentIndex].image} alt="slide" className="slide-image" />
+      </div>
+
+      <div className="button-group">
+        {currentIndex > 0 && (
+          <button className="back-button" onClick={handleBack}>
+            Back
+          </button>
+        )}
+        {currentIndex < slides.length - 1 ? (
+          <button className="next-button" onClick={handleNext}>
+            Next
+          </button>
+        ) : (
+          <button className="start-button" onClick={handleStart}>
+            Start
+          </button>
+        )}
+      </div>
     </div>
   );
 };

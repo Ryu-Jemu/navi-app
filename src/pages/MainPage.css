@@ -28,18 +28,23 @@
 }
 
 .section-title {
+  width: 90%;
+  max-width: 380px;
   font-size: 18px;
-  font-weight: 700;
   color: var(--black);
+  margin: 24px 0 8px 0;
 }
 
 .more-button {
   background: none;
+  width: 80px;
   border: none;
   color: var(--sub-gray);
   font-size: 12px;
+  text-align: center;
   cursor: pointer;
-  padding: 4px 8px;
+  padding-top: 26px;
+  margin-right: -8px;
 }
 
 .more-button:hover {

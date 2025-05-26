@@ -54,7 +54,9 @@ const Main_Page = () => {
 
       <div className="section-header">
         <h3 className="section-title">To do List</h3>
-        <button className="more-button" onClick={() => navigate('/calendar')}>more &gt;</button>
+        <button className="more-button" onClick={() => navigate('/calendar')}>
+          more &gt;
+          </button>
       </div>
 
       <section className="todo-wrapper">

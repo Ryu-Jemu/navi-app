@@ -4,6 +4,8 @@ import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
 import ListIcon from '../assets/List_Icon.png';
 import PlusIcon from '../assets/Plus_Icon.png';
+import MoveLeftIcon from '../assets/MoveLeft_Icon'
+import MoveRightIcon from '../assets/MoveRight_Icon'
 
 const CalendarPage = () => {
   const today = new Date();
@@ -78,13 +80,17 @@ const CalendarPage = () => {
       </header>
 
       <div className="month-navigation">
-        <button onClick={handlePrevMonth} className="arrow-button">◀</button>
+        <button onClick={handlePrevMonth} className="arrow-button">
+          <img src={MoveLeftIcon} alt="PreMonth" />
+        </button>
         <div className="month-text">
           {currentYear}
           <br />
           <span>{monthNames[currentMonth]}</span>
         </div>
-        <button onClick={handleNextMonth} className="arrow-button">▶</button>
+        <button onClick={handleNextMonth} className="arrow-button">
+        <img src={MoveRightIcon} alt="NextMonth" />
+        </button>
       </div>
 
       <div className="weekday-row">

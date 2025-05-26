@@ -26,7 +26,7 @@ const BottomNav = () => {
         <img src={CalendarIcon} alt="Calendar" />
         <span>CALENDAR</span>
       </NavLink>
-      <NavLink to="/more" className="nav-item">
+      <NavLink to="/more" className="nav-item more">
         <img src={MoreIcon} alt="More" />
         <span>MORE</span>
       </NavLink>

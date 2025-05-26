@@ -2,14 +2,27 @@ import React from 'react';
 import './LoginPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/logo.png';
+import { login } from '../api/auth';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [studentId, setStudentId] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-    
-    navigate('/main'); 
+  const handleSubmit = async (e) => {
+      // 새로고침 막음
+    e.preventDefault();
+    try {
+      const result = await login({ studentId, password });
+      if (result.success) {
+        navigate('/main');
+      } else {
+        alert('Login failed: ' + result.message);
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      alert('An error occurred during login.');
+    }
   };
 
   return (
@@ -21,10 +34,12 @@ const LoginPage = () => {
 
         <form className="login-form" onSubmit={handleSubmit}>
           <label htmlFor="student-id">Student ID</label>
-          <input id="student-id" type="text" placeholder="10-digit number" required />
+          <input id="student-id" type="text" placeholder="10-digit number" required
+                 value={studentId} onChange={(e) => setStudentId(e.target.value)} />
 
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" placeholder="Password" required />
+          <input id="password" type="password" placeholder="Password" required
+                 value={password} onChange={(e) => setPassword(e.target.value)} />
 
           <button type="submit" className="login-button">Sign In</button>
         </form>

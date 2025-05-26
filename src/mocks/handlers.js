@@ -16,4 +16,9 @@ export const handlers = [
         console.log('Findpassword request body"', body);
         return HttpResponse.json({ success: true, message: 'Temporary password sent' });
     }),
+    http.post('http://localhost:3000/api/chat', async ({ request }) => {
+        const body = await request.json();
+        console.log('Chat request body:', body);
+        return HttpResponse.json({ reply: `Echo: ${body.message}` });
+    }),
 ];

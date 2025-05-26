@@ -2,12 +2,10 @@
 const API_URL = 'http://localhost:3000/api';
 
 export async function login({ studentId, password }) {
-    const res = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ studentId, password })
-    });
-    return res.json();
+    return {
+        success: true,
+        message: 'Login simulated successfully'
+    }
 }
 
 export async function signup({ name, nickname, country, studentId, password, email }) {

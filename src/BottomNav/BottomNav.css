@@ -23,12 +23,12 @@
 }
 
 .nav-item img {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   margin-bottom: 2px;
 }
 
 .nav-item.home img {
-  width: 36px;
+  width: 30px;
   height: 30px;
 }

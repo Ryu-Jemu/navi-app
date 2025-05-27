@@ -60,14 +60,14 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
-  padding: 0 12px;
+  padding: 0 6px;
 }
 
 .day-cell {
   text-align: center;
-  padding: 8px 0;
-  border-radius: 6px;
-  background-color: #f5f5f5;
+  padding: 12px 4px;
+  border-radius: 8px;
+  background-color: var(--white);
   cursor: pointer;
 }
 
@@ -79,6 +79,8 @@
 
 .day-cell.selected {
   box-sizing: border-box;
+  background-color: var(--navy);
+  color: var(--white);
   border: 2px solid var(--main-yellow);
   font-weight: bold;
 }

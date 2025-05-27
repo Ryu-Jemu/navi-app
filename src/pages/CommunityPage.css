@@ -76,7 +76,8 @@
 }
 
 .ad-banner {
-  background-color: #c4c4c4;
+  background-color: var(--gray-1);
+  color: var(--sub-gray);
   border-radius: 12px;
   text-align: center;
   font-size: 30px;

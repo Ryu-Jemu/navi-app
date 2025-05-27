@@ -80,12 +80,18 @@ const OnboardingPage = () => {
         <img src={slides[currentIndex].image} alt="slide" className="slide-image" />
       </div>
 
-      <div className="button-group">
+      <div
+        className="button-group"
+        style={{
+          justifyContent: currentIndex === 0 ? 'center' : 'space-between',
+        }}
+      >
         {currentIndex > 0 && (
           <button className="back-button" onClick={handleBack}>
             Back
           </button>
         )}
+
         {currentIndex < slides.length - 1 ? (
           <button className="next-button" onClick={handleNext}>
             Next

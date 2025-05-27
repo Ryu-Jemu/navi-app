@@ -1,5 +1,6 @@
 // CalendarPage.jsx
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CalendarPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import ProfileIcon from '../assets/Profile_Icon.png';
@@ -18,6 +19,8 @@ const CalendarPage = () => {
 
   const profileRef = useRef(null);
   const listRef = useRef(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -47,6 +50,9 @@ const CalendarPage = () => {
 
   const handleFilterClick = (filter) => {
     alert(`Selected: ${filter}`);
+    if (filter === 'Log-Out') {
+      navigate('/login');
+    }
     setShowProfileMenu(false);
     setShowListMenu(false);
   };

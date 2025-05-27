@@ -183,4 +183,5 @@
 
 .popup-item:hover {
   background-color: var(--sub-yellow-1);
+  border-radius: 8px;
 }

@@ -4,6 +4,9 @@ import './CommunityPage.css';
 import BottomNav from '../BottomNav/BottomNav';
 import logoImage from '../assets/logo.png';
 import profileIcon from '../assets/Profile_Icon.png';
+import AnonIcon from '../assets/Anon_Icon.png';
+import HeartIcon from '../assets/Heart_Icon.png';
+import CommentIcon from '../assets/Comment_Icon.png';
 
 const CommunityPage = () => {
   const navigate = useNavigate();
@@ -14,13 +17,6 @@ const CommunityPage = () => {
     const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
     setPosts(storedPosts);
   }, []);
-
-  // eslint-disable-next-line
-  const handleDelete = (id) => {
-    const updatedPosts = posts.filter(post => post.id !== id);
-    setPosts(updatedPosts);
-    localStorage.setItem('communityPosts', JSON.stringify(updatedPosts));
-  };
 
   const filteredPosts =
     selectedTab === 'My Post'
@@ -75,11 +71,24 @@ const CommunityPage = () => {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="post-header">
-                  <span>{post.isAnon ? 'Anon' : 'User'}</span>
+                  <div className="post-user">
+                    <img src={AnonIcon} alt="Anon" className="checkuser" />
+                    <span>{post.isAnon ? 'Anon' : 'User'}</span>
+                  </div>
+                  <div className="post-date">{post.date}</div>
                 </div>
                 <h3 className="post-title">{post.title}</h3>
                 <p className="post-content">{post.content}</p>
-                <span className="post-footer">{post.date}</span>
+                <div className="post-stats">
+                  <div className="stat-item">
+                    <img src={HeartIcon} alt="Likes" className="stat-icon" />
+                    <span>{post.likes || 0}</span>
+                  </div>
+                  <div className="stat-item">
+                    <img src={CommentIcon} alt="Comments" className="stat-icon" />
+                    <span>{post.comments ? post.comments.length : 0}</span>
+                  </div>
+                </div>
               </div>
             ))
           )}

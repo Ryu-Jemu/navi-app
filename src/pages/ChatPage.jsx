@@ -8,7 +8,12 @@ import ProfileIcon from '../assets/Profile_Icon.png';
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([
-    { type: 'bot', text: '안녕하세요. 무엇을 도와드릴까요?', time: '16:01' },
+      // 시간, 언어 설정
+    {
+      type: 'bot',
+      text: '안녕하세요. 무엇을 도와드릴까요?',
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    },
   ]);
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
@@ -20,6 +25,7 @@ const ChatPage = () => {
     const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
 
     const userMessage = { type: 'user', text: input, time: timeStr };
+    // 이전 메시지 배열에서 새로운 메시지 추가, 가장 최신의 상태를 보장
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
 

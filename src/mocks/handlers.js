@@ -21,4 +21,9 @@ export const handlers = [
         console.log('Chat request body:', body);
         return HttpResponse.json({ reply: `Echo: ${body.message}` });
     }),
+    http.post('http://localhost:3000/api/community', async ({ request }) => {
+        const body = await request.json();
+        console.log('Test request body:', body);
+        return HttpResponse.json({ success: true, result: 'Test API response' });
+    }),
 ];

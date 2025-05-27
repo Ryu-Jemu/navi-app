@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AddPostPage.css';
 import closeIcon from '../assets/X.png';
 import cameraIcon from '../assets/Photo-Icon.png';
+import { addCommunityPost } from '../api/community';
 
 const AddPostPage = () => {
   const navigate = useNavigate();
@@ -10,25 +11,27 @@ const AddPostPage = () => {
   const [content, setContent] = useState('');
   const [isAnon, setIsAnon] = useState(false);
 
-  const handlePost = () => {
+  const handlePost = async () => {
     if (!title.trim() || !content.trim()) {
       alert('Please enter both title and content.');
       return;
     }
 
     const newPost = {
-      id: Date.now(),
       title,
       content,
       isAnon,
-      date: new Date().toLocaleString(),
+      date: new Date().toISOString(),
     };
 
-    const existingPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
-    const updatedPosts = [newPost, ...existingPosts];
-    localStorage.setItem('communityPosts', JSON.stringify(updatedPosts));
-
-    navigate('/community');
+    try {
+      // promise가 처리될 때까지 기다린다.
+      await addCommunityPost(newPost);
+      navigate('/community');
+    } catch (err) {
+      console.error('Failed to post:', err);
+      alert('Failed to post. Please try again later.');
+    }
   };
 
   return (

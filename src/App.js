@@ -11,6 +11,7 @@ import BoardPage from './pages/CommunityPage';
 import AddPostPage from './pages/AddPostPage';
 import OnboardingPage from './pages/OnboardingPage';
 import PostDetailPage from './pages/PostDetailPage';
+import MorePage from './pages/MorePage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/post/:id" element={<PostDetailPage />} />
+        <Route path="/more" element={<MorePage />} />
       </Routes>
     </Router>
   );

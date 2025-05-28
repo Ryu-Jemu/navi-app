@@ -1,3 +1,5 @@
+
+/* BottomNav.css */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -6,10 +8,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--gray-2);
   background-color: var(--white);
   z-index: 1000;
-
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -17,39 +18,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 10px;
   text-decoration: none;
-  color: #222;
-}
-
-.nav-item img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 2px;
-}
-
-.nav-item.home img {
-  width: 30px;
-  height: 30px;
-}
-
-.bottom-nav {
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--white);
-  border-top: 1px solid var(--gray-2);
-  padding: 8px 0;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: var(--sub-gray);
-  text-decoration: none;
 }
 
-.nav-item img {
+.nav-icon {
   width: 24px;
   height: 24px;
   transition: filter 0.2s ease;
@@ -60,8 +33,7 @@
   margin-top: 4px;
 }
 
-/* ✅ 현재 활성화된 페이지 (노란색으로 표시) */
-.nav-item.active img {
+.nav-item.active .nav-icon {
   filter: brightness(0) saturate(100%) invert(76%) sepia(61%) saturate(637%) hue-rotate(359deg) brightness(101%) contrast(102%);
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FindPage.css';
 import { useNavigate } from 'react-router-dom';
-import logoImage from '../assets/logo.png';
+import logoImage from '../assets/logo.svg';
 import { findPassword } from '../api/auth';
 
 const FindPage = () => {

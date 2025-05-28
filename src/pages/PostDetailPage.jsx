@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PostDetailPage.css';
-import HeartIcon from '../assets/Heart_Icon.png';
-import CommentIcon from '../assets/Comment_Icon.png';
+import HeartIcon from '../assets/Heart.svg';
+import CommentIcon from '../assets/Comment.svg';
 
 const PostDetailPage = () => {
   const { id } = useParams();

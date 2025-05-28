@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { sendChatMessage } from '../api/chat';
 import './ChatPage.css';
-import LogoImage from '../assets/logo.png';
-import SearchIcon from '../assets/Search_Icon.png';
-import ProfileIcon from '../assets/Profile_Icon.png';
+import LogoImage from '../assets/logo.svg';
+import SearchIcon from '../assets/Search.svg';
+import ProfileIcon from '../assets/Profile.svg';
 
 
 const ChatPage = () => {

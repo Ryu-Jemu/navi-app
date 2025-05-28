@@ -1,11 +1,11 @@
 import React from 'react';
 import './BottomNav.css';
 import { NavLink } from 'react-router-dom';
-import CommunityIcon from '../assets/Community_Icon.png';
-import ChatIcon from '../assets/AI_Chat_Icon.png';
-import HomeIcon from '../assets/Home_Icon.png';
-import CalendarIcon from '../assets/Calendar_Icon.png';
-import MoreIcon from '../assets/More_Icon.png';
+import CommunityIcon from '../assets/Community.svg';
+import ChatIcon from '../assets/AIChat.svg';
+import HomeIcon from '../assets/Home.svg';
+import CalendarIcon from '../assets/Calendar.svg';
+import MoreIcon from '../assets/More.svg';
 
 const BottomNav = () => {
   return (
@@ -26,7 +26,7 @@ const BottomNav = () => {
         <img src={CalendarIcon} alt="Calendar" />
         <span>CALENDAR</span>
       </NavLink>
-      <NavLink to="/more" className="nav-item more">
+      <NavLink to="/more" className="nav-item">
         <img src={MoreIcon} alt="More" />
         <span>MORE</span>
       </NavLink>

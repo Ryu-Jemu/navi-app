@@ -3,11 +3,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CalendarPage.css';
 import BottomNav from '../BottomNav/BottomNav';
-import ProfileIcon from '../assets/Profile_Icon.png';
-import ListIcon from '../assets/List_Icon.png';
-import PlusIcon from '../assets/Plus_Icon.png';
-import MoveLeftIcon from '../assets/MoveLeft_Icon.png';
-import MoveRightIcon from '../assets/MoveRight_Icon.png';
+import ProfileIcon from '../assets/Profile.svg';
+import ListIcon from '../assets/List.svg';
+import PlusIcon from '../assets/Plus.svg';
+import MoveLeftIcon from '../assets/MoveLeft.svg';
+import MoveRightIcon from '../assets/MoveRight.svg';
 
 const CalendarPage = () => {
   const today = new Date();

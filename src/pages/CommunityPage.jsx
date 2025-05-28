@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CommunityPage.css';
 import BottomNav from '../BottomNav/BottomNav';
-import logoImage from '../assets/logo.png';
-import profileIcon from '../assets/Profile_Icon.png';
-import AnonIcon from '../assets/Anon_Icon.png';
-import HeartIcon from '../assets/Heart_Icon.png';
-import CommentIcon from '../assets/Comment_Icon.png';
+import logoImage from '../assets/logo.svg';
+import profileIcon from '../assets/Profile.svg';
+import AnonIcon from '../assets/Anon.svg';
+import HeartIcon from '../assets/Heart.svg';
+import CommentIcon from '../assets/Comment.svg';
 
 const CommunityPage = () => {
   const navigate = useNavigate();

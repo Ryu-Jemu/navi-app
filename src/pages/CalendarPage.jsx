@@ -1,4 +1,3 @@
-// CalendarPage.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CalendarPage.css';
@@ -16,6 +15,10 @@ const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showListMenu, setShowListMenu] = useState(false);
+  const [showAddTask, setShowAddTask] = useState(false);
+  const [taskInput, setTaskInput] = useState('');
+  const [deadlineInput, setDeadlineInput] = useState('');
+  const [tasks, setTasks] = useState({}); // { 'YYYY-MM-DD': [ { text, deadline } ] }
 
   const profileRef = useRef(null);
   const listRef = useRef(null);
@@ -49,7 +52,6 @@ const CalendarPage = () => {
   }
 
   const handleFilterClick = (filter) => {
-    alert(`Selected: ${filter}`);
     if (filter === 'Log-Out') {
       navigate('/login');
     }
@@ -75,6 +77,26 @@ const CalendarPage = () => {
       setCurrentMonth(currentMonth + 1);
     }
     setSelectedDate(null);
+  };
+
+  const handleAddTaskClick = () => {
+    setShowAddTask(!showAddTask);
+    setDeadlineInput(''); // 초기화
+  };
+
+  const handleSubmitTask = () => {
+    if (taskInput.trim() === '' || deadlineInput.trim() === '') {
+      alert('Please enter both a task and a deadline.');
+      return;
+    }
+    const key = deadlineInput; // 선택한 마감일을 key로 사용
+    setTasks((prev) => ({
+      ...prev,
+      [key]: prev[key] ? [...prev[key], { text: taskInput, deadline: key }] : [{ text: taskInput, deadline: key }],
+    }));
+    setTaskInput('');
+    setDeadlineInput('');
+    setShowAddTask(false);
   };
 
   const monthNames = [
@@ -133,46 +155,75 @@ const CalendarPage = () => {
             }`}
           >
             {day}
-          </div>        ))}
-      </div>
-
-      <div className="calendar-grid">
-        {calendarCells.map((day, i) => (
-          <div
-            key={i}
-            className={`day-cell ${day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear() ? 'today' : ''} ${selectedDate === day ? 'selected' : ''} ${day === null ? 'empty' : ''}`}
-            onClick={() => day && setSelectedDate(day)}
-          >
-            {day || ''}
           </div>
         ))}
       </div>
 
-      <div className="today-section">
-        <h3>
-          {selectedDate
-            ? `${currentYear}.${(currentMonth + 1).toString().padStart(2, '0')}.${selectedDate.toString().padStart(2, '0')}`
-            : 'Select a date'}
-        </h3>
-        <div className="task-list">
-          {selectedDate ? (
-            <>
-              <div className="task-card">
-                📄 Task for {selectedDate}
-              </div>
-              <div className="task-card urgent">
-                📌 Urgent task for {selectedDate}
-              </div>
-            </>
-          ) : (
-            <div className="no-task">Please select a date to see tasks.</div>
-          )}
-        </div>
-        <div className="plus-button-container">
-          <img src={PlusIcon} alt="Add Task" className="plus-button" onClick={() => alert('Add Task clicked')} />
-        </div>
+      <div className="calendar-grid">
+        {calendarCells.map((day, i) => {
+          const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+          const hasTasks = tasks[dateKey] && tasks[dateKey].length > 0;
+          return (
+            <div
+              key={i}
+              className={`day-cell ${day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear() ? 'today' : ''} ${selectedDate === day ? 'selected' : ''} ${day === null ? 'empty' : ''}`}
+              onClick={() => day && setSelectedDate(day)}
+            >
+              {day || ''}
+              {hasTasks && <span className="task-dot">●</span>}
+            </div>
+          );
+        })}
       </div>
 
+      <div className="today-section">
+  <h3>
+    {selectedDate
+      ? `${currentYear}.${(currentMonth + 1).toString().padStart(2, '0')}.${selectedDate.toString().padStart(2, '0')}`
+      : 'Select a date'}
+  </h3>
+
+  <div className="task-list">
+    {selectedDate ? (
+      tasks[`${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(selectedDate).padStart(2, '0')}`]?.map((task, idx) => (
+        <div key={idx} className="task-card">
+          📌 {task.text} <span style={{ fontSize: '12px', color: '#999' }}>(Deadline: {task.deadline})</span>
+        </div>
+      ))
+    ) : (
+      <div className="no-task">Please select a date to see tasks.</div>
+    )}
+  </div>
+
+  <div className="plus-button-container">
+    <img src={PlusIcon} alt="Add Task" className="plus-button" onClick={handleAddTaskClick} />
+  </div>
+
+  {showAddTask && (
+    <div className="task-save-container">
+      <div className="input-section">
+        <input
+          type="text"
+          placeholder="Enter task"
+          value={taskInput}
+          onChange={(e) => setTaskInput(e.target.value)}
+          className="task-input"
+        />
+        <input
+          type="date"
+          value={deadlineInput}
+          onChange={(e) => setDeadlineInput(e.target.value)}
+          className="date-input"
+        />
+      </div>
+      <div className="save-section">
+        <button onClick={handleSubmitTask} className="save-button">
+          Save
+        </button>
+      </div>
+    </div>
+  )}
+</div>
       <BottomNav />
     </div>
   );

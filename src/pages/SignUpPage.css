@@ -77,6 +77,11 @@
   cursor: pointer;
 }
 
+.finish-button:hover {
+  background-color: var(--main-yellow);
+  color: var(--navy);
+}
+
 .signup-container {
   position: relative; /* X 버튼 absolute용 */
   background-color: var(--white);

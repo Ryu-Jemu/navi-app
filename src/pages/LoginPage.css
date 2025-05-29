@@ -68,6 +68,11 @@
   margin-top: 8px;
 }
 
+.login-button:hover {
+  background-color: var(--main-yellow);
+  color: var(--navy);
+}
+
 .login-links {
   margin-top: 20px;
   display: flex;

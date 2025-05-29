@@ -87,7 +87,7 @@ const OnboardingPage = () => {
         }}
       >
         {currentIndex > 0 && (
-          <button className="back-button" onClick={handleBack}>
+          <button className="obd-back-button" onClick={handleBack}>
             Back
           </button>
         )}

@@ -73,3 +73,8 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.find-buttons:hover {
+  background-color: var(--main-yellow);
+  color: var(--navy);
+}

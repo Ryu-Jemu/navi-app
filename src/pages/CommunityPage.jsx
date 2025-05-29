@@ -75,11 +75,9 @@ const CommunityPage = () => {
         <div className="search-bar">
           <input type="text" placeholder="Search..." />
         </div>
-
-        <div className="ad-banner">
+        <a href="https://www.hanyang.ac.kr/" target="_blank" rel="noopener noreferrer" className="ad-banner">
           <strong>Advertisement</strong>
-        </div>
-
+        </a>
         <nav className="tab-menu">
           {['Trend', 'New', 'My Post', 'Scrap'].map(tab => (
             <button

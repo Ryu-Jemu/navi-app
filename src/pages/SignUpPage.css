@@ -107,8 +107,8 @@
   position: absolute;
   top: -50px;       /* 박스 위로 살짝 띄움 */
   right: -28px;     /* 박스 오른쪽으로 살짝 띄움 */
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   cursor: pointer;
   z-index: 10;
 }

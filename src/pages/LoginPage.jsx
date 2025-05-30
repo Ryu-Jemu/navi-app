@@ -3,6 +3,7 @@ import './LoginPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/logo.svg';
 import { login } from '../api/auth';
+import { saveToken } from '../utils/token'
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ const LoginPage = () => {
     try {
       const result = await login({ studentId, password });
       if (result.success) {
+        // 인증에 성공하면 서버에서 token을 발급받아서 local에 저장
+        saveToken(result.token);
         navigate('/main');
       } else {
         alert('Login failed: ' + result.message);

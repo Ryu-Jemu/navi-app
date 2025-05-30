@@ -1,3 +1,4 @@
+import { fetchCommunityPosts, deleteCommunityPost } from '../api/community';
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CommunityPage.css';
@@ -16,15 +17,14 @@ const CommunityPage = () => {
   const profileRef = useRef(null);
 
   useEffect(() => {
-    const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
-    setPosts(storedPosts);
-  
+    fetchCommunityPosts().then(setPosts);
+
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setShowProfileMenu(false);
       }
     };
-  
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -41,6 +41,11 @@ const CommunityPage = () => {
     selectedTab === 'My Post'
       ? posts.filter(post => !post.isAnon)
       : posts;
+
+  const handleDelete = async (id) => {
+    await deleteCommunityPost(id);
+    setPosts((prev) => prev.filter((post) => post.id !== id));
+  };
 
   return (
     <div className="community-container">

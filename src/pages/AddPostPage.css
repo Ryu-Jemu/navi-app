@@ -1,7 +1,7 @@
 .addpost-container {
   padding: 16px;
   font-family: 'Pretendard', sans-serif;
-  background-color: #f5f5f5;
+  background-color: var(--sub-yellow);
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -31,7 +31,7 @@
   margin: 16px 0;
   padding: 14px;
   font-size: 16px;
-  background-color: #fff8dc; /* 연한 노랑 */
+  background-color: #fff8dc; 
   border: none;
   border-radius: 12px;
 }

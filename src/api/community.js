@@ -47,3 +47,26 @@ export async function deleteCommunityPost(id) {
     throw new Error('Failed to delete post');
   }
 }
+/**
+ * 커뮤니티 특정 게시글 (id) 조회, 댓글 포함해서 fetch
+ */
+export async function fetchCommunityPostById(id) {
+  const res = await fetch(`${API_URL}/posts/${id}`);
+  if (!res.ok) throw new Error('Failed to fetch post');
+  return res.json();
+}
+/**
+ * getAuthHeader 댓글 쓰기 인증 필요
+ */
+export async function updateCommunityPost(post) {
+  const res = await fetch(`${API_URL}/posts/${post.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      ...getAuthHeader(),
+    },
+    body: JSON.stringify(post),
+  });
+  if (!res.ok) throw new Error('Failed to update post');
+  return res.json();
+}

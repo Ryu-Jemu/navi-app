@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './PostDetailPage.css';
 import HeartIcon from '../assets/Heart.svg';
 import CommentIcon from '../assets/Comment.svg';
+import { fetchCommunityPostById, updateCommunityPost } from '../api/community';
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -12,13 +13,12 @@ const PostDetailPage = () => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
 
+  // 초기 데이터 로딩 로직 해당 id의 글을 가져온다.
   useEffect(() => {
-    const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
-    const foundPost = storedPosts.find(p => p.id === Number(id));
-    if (foundPost) {
-      setPost(foundPost);
-      setComments(foundPost.comments || []);
-    }
+    fetchCommunityPostById(id).then(data => {
+      setPost(data);
+      setComments(data.comments || []);
+    });
   }, [id]);
 
   const handleLike = () => {
@@ -45,11 +45,9 @@ const PostDetailPage = () => {
     setComments(updatedComments);
   };
 
-  const updatePost = (updatedPost) => {
-    const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
-    const updatedPosts = storedPosts.map(p => p.id === updatedPost.id ? updatedPost : p);
-    localStorage.setItem('communityPosts', JSON.stringify(updatedPosts));
-    setPost(updatedPost);
+  const updatePost = async (updatedPost) => {
+    const savedPost = await updateCommunityPost(updatedPost);
+    setPost(savedPost);
   };
 
   if (!post) return <p>Loading...</p>;

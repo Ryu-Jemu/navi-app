@@ -6,10 +6,13 @@ export const handlers = [
         console.log('Signup request body"', body);
         return HttpResponse.json({ success: true, message: 'Signup simulated successfully' });
     }),
-    http.post('http://localhost:3000/api/login', async ({ request }) => {
+    http.post('http://localhost:3000/api/accounts/login/', async ({ request }) => {
         const body = await request.json();
-        console.log('Login request body"', body);
-        return HttpResponse.json({ success: true, message: 'Login simulated successfully' });
+        console.log('Login request body:', body);
+        return HttpResponse.json({
+            access: 'mock-access-token',
+            refresh: 'mock-refresh-token'
+        });
     }),
     http.post('http://localhost:3000/api/findpassword', async ({ request }) => {
         const body = await request.json();

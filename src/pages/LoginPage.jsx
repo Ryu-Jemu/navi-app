@@ -15,12 +15,12 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const result = await login({ studentId, password });
-      if (result.success) {
-        // 인증에 성공하면 서버에서 token을 발급받아서 local에 저장
-        saveToken(result.token);
+      if (result.access && result.refresh) {
+        localStorage.setItem('access', result.access);
+        localStorage.setItem('refresh', result.refresh);
         navigate('/main');
       } else {
-        alert('Login failed: ' + result.message);
+        alert('Login failed: Invalid token response');
       }
     } catch (err) {
       console.error('Login error:', err);

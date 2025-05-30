@@ -6,7 +6,27 @@
     background-color: var(--white);
     font-family: 'Pretendard', sans-serif;
   }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
   
+  .header-icons img {
+    width: 28px;   /* ← 원하는 크기로 (예: 28px ~ 32px 추천) */
+    height: 28px;
+  }
+
+  .popup-logout {
+    position: absolute;
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+  }
+
   .chat-header {
     display: flex;
     justify-content: space-between;
@@ -62,8 +82,8 @@
   }
   
   .chat-input-section {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 70px;
     left: 0;
     right: 0;
     display: flex;

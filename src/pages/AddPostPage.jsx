@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddPostPage.css';
-import closeIcon from '../assets/X.png';
-import cameraIcon from '../assets/Photo-Icon.png';
+import closeIcon from '../assets/X.svg';
+import cameraIcon from '../assets/Photo.svg';
 import { addCommunityPost } from '../api/community';
 
 const AddPostPage = () => {

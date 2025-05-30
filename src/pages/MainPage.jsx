@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './MainPage.css';
 import BottomNav from '../BottomNav/BottomNav';
-import logoImage from '../assets/logo.png';
-import HeartIcon from '../assets/Heart_Icon.png';
-import CommentIcon from '../assets/Comment_Icon.png'
+import logoImage from '../assets/logo.svg';
+import HeartIcon from '../assets/Heart.svg';
+import CommentIcon from '../assets/Comment.svg'
 import { useNavigate } from 'react-router-dom';
 
 const Main_Page = () => {

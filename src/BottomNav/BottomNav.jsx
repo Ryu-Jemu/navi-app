@@ -1,33 +1,34 @@
+// BottomNav.jsx
 import React from 'react';
 import './BottomNav.css';
 import { NavLink } from 'react-router-dom';
-import CommunityIcon from '../assets/Community_Icon.png';
-import ChatIcon from '../assets/AI_Chat_Icon.png';
-import HomeIcon from '../assets/Home_Icon.png';
-import CalendarIcon from '../assets/Calendar_Icon.png';
-import MoreIcon from '../assets/More_Icon.png';
+import { ReactComponent as CommunityIcon } from '../assets/Community.svg';
+import { ReactComponent as ChatIcon } from '../assets/AIChat.svg';
+import { ReactComponent as HomeIcon } from '../assets/Home.svg';
+import { ReactComponent as CalendarIcon } from '../assets/Calendar.svg';
+import { ReactComponent as MoreIcon } from '../assets/More.svg';
 
 const BottomNav = () => {
   return (
     <div className="bottom-nav">
-      <NavLink to="/community" className="nav-item">
-        <img src={CommunityIcon} alt="Board" />
-        <span>COMMUNITY</span>
+      <NavLink to="/community" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+        <CommunityIcon className="nav-icon" />
+        <span>FEED</span>
       </NavLink>
-      <NavLink to="/chat" className="nav-item">
-        <img src={ChatIcon} alt="Chat" />
+      <NavLink to="/chat" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+        <ChatIcon className="nav-icon" />
         <span>AI CHAT</span>
       </NavLink>
-      <NavLink to="/main" className="nav-item home">
-        <img src={HomeIcon} alt="Home" />
+      <NavLink to="/main" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+        <HomeIcon className="nav-icon" />
         <span>HOME</span>
       </NavLink>
-      <NavLink to="/calendar" className="nav-item">
-        <img src={CalendarIcon} alt="Calendar" />
+      <NavLink to="/calendar" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+        <CalendarIcon className="nav-icon" />
         <span>CALENDAR</span>
       </NavLink>
-      <NavLink to="/more" className="nav-item more">
-        <img src={MoreIcon} alt="More" />
+      <NavLink to="/more" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+        <MoreIcon className="nav-icon" />
         <span>MORE</span>
       </NavLink>
     </div>

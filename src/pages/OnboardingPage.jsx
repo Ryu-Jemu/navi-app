@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './OnboardingPage.css';
 
-import CalendarImage from '../assets/onboarding-calendar.png';
-import ChatbotImage from '../assets/onboarding-chat.png';
-import CommunityImage from '../assets/onboarding-community.png';
+import CalendarImage from '../assets/Onboarding-Cal.svg';
+import ChatbotImage from '../assets/Onboarding-Chat.svg';
+import CommunityImage from '../assets/Onboarding-Com.svg';
 
 const slides = [
   {

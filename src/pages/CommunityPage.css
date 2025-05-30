@@ -22,6 +22,17 @@
   align-items: flex-start;
 }
 
+.popup-logout {
+  position: absolute;
+  top: 40px;
+  background-color: var(--white);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  padding: 4px 0;
+}
+
 .community-logo {
   width: 40px;
   height: auto;
@@ -76,7 +87,8 @@
 }
 
 .ad-banner {
-  background-color: #c4c4c4;
+  background-color: var(--gray-1);
+  color: var(--sub-gray);
   border-radius: 12px;
   text-align: center;
   font-size: 30px;
@@ -91,6 +103,7 @@
   justify-content: center;
   height: 85px;
 }
+
 .tab-menu {
   display: flex;
   justify-content: space-around;
@@ -132,8 +145,21 @@
 
 .post-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
   font-size: 12px;
-  padding: 4px 0 0 6px;
+  color: var(--sub-gray);
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.post-date {
+  font-size: 12px;
   color: var(--sub-gray);
 }
 
@@ -148,14 +174,6 @@
   margin: 0 auto;
 }
 
-.post-footer {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 2px;
-  font-size: 12px;
-  color: var(--sub-gray);
-}
-
 .delete-button {
   margin-top: 8px;
   background-color: #f26d6d;
@@ -165,4 +183,44 @@
   padding: 6px 12px;
   font-size: 12px;
   cursor: pointer;
+}
+
+/* 좋아요 & 댓글 수 스타일 */
+.post-stats {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 4px 6px;
+  font-size: 12px;
+  color: var(--sub-gray);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* 기존 post-card에 추가 공간 확보 */
+.post-card {
+  background-color: var(--gray-2);
+  border-radius: 12px;
+  padding: 8px;
+  position: relative;
+}
+
+/* 좋아요 & 댓글 수 아래쪽 맞춤 */
+.post-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 6px;
+  font-size: 12px;
+  color: var(--sub-gray);
+  margin-top: 4px;
 }

@@ -1,0 +1,74 @@
+.more-page {
+    font-family: 'Pretendard', sans-serif;
+    padding: 20px;
+    background-color: var(--white);
+    height: 100vh;
+  }
+  
+  .more-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 60px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .profile-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  
+  .nickname {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .logout-button {
+    background-color: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .menu-item {
+    background-color: var(--gray-2);
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .menu-item:hover {
+    background-color: var(--navy);
+    color: var(--main-yellow);
+  }

@@ -7,6 +7,8 @@
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  position: relative;
+  z-index: 1;
 }
 
 .find-logo-img {
@@ -72,4 +74,9 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.find-buttons button:hover {
+  background-color: var(--main-yellow);
+  color: var(--navy);
 }

@@ -62,7 +62,7 @@
   box-sizing: border-box;
 }
 
-.back-button,
+.obd-back-button,
 .next-button,
 .start-button {
   display: flex;
@@ -78,13 +78,20 @@
   cursor: pointer;
 }
 
-.back-button {
+.obd-back-button {
   background-color: var(--white) !important;
   color: var(--gray-1) !important;
+  border: none;
 }
 
 .next-button,
 .start-button {
   background-color: var(--navy);
   color: var(--white);
+}
+
+.next-button:hover,
+.start-button:hover {
+  background-color: var(--main-yellow);
+  color: var(--navy);
 }

@@ -92,7 +92,7 @@ const SignUpPage = () => {
         <label>E-mail</label>
         <input type="email" placeholder="@hanyang.ac.kr" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-          <button type="submit">Finish</button>
+          <button type="submit" className="finish-button">Finish</button>
         </form>
       </div>
     </div>

@@ -3,6 +3,7 @@ import './LoginPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/logo.svg';
 import { login } from '../api/auth';
+import { saveToken } from '../utils/token'
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -14,10 +15,12 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const result = await login({ studentId, password });
-      if (result.success) {
+      if (result.access && result.refresh) {
+        localStorage.setItem('access', result.access);
+        localStorage.setItem('refresh', result.refresh);
         navigate('/main');
       } else {
-        alert('Login failed: ' + result.message);
+        alert('Login failed: Invalid token response');
       }
     } catch (err) {
       console.error('Login error:', err);

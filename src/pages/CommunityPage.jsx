@@ -1,4 +1,16 @@
+import { fetchCommunityPosts, deleteCommunityPost } from '../api/community';
 import { useState, useRef, useEffect } from 'react';
+/**
+ * 명시적 정의
+ * @typedef {Object} Post
+ * @property {number} id - 고유 게시글 ID
+ * @property {string} title - 게시글 제목
+ * @property {string} content - 게시글 본문
+ * @property {boolean} isAnon - 익명 여부
+ * @property {string} date - 작성 날짜 (ISO 형식)
+ * @property {number} [likes] - 좋아요 수
+ * @property {string[]} [comments] - 댓글 목록
+ */
 import { useNavigate } from 'react-router-dom';
 import './CommunityPage.css';
 import BottomNav from '../BottomNav/BottomNav';
@@ -7,24 +19,25 @@ import ProfileIcon from '../assets/Profile.svg';
 import AnonIcon from '../assets/Anon.svg';
 import HeartIcon from '../assets/Heart.svg';
 import CommentIcon from '../assets/Comment.svg';
+import { clearToken } from '../utils/token'
 
 const CommunityPage = () => {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState('Trend');
+  /** @type {[Post[], Function]} */
   const [posts, setPosts] = useState([]);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const profileRef = useRef(null);
 
   useEffect(() => {
-    const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
-    setPosts(storedPosts);
-  
+    fetchCommunityPosts().then(setPosts);
+
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setShowProfileMenu(false);
       }
     };
-  
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -32,6 +45,8 @@ const CommunityPage = () => {
   }, []);
     const handleFilterClick = (filter) => {
       if (filter === 'Log-Out') {
+        // token을 반납한다.
+        clearToken();
         navigate('/login');
       }
       setShowProfileMenu(false);
@@ -41,6 +56,11 @@ const CommunityPage = () => {
     selectedTab === 'My Post'
       ? posts.filter(post => !post.isAnon)
       : posts;
+  // 지우는 ui 아직 없음
+  const handleDelete = async (id) => {
+    await deleteCommunityPost(id);
+    setPosts((prev) => prev.filter((post) => post.id !== id));
+  };
 
   return (
     <div className="community-container">

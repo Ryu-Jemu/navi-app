@@ -35,6 +35,7 @@ const SignUpPage = () => {
       const result = await signup({ name, nickname, country, studentId, password, email });
       if (result.success) {
         alert('Signup successful. Please log in.');
+        // 로그인 페이지로 이동
         setTimeout (() => navigate('/login'));
       } else {
         alert('Signup failed: ' + result.message);

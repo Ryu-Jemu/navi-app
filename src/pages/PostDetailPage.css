@@ -7,14 +7,14 @@
 }
 
 .back-button {
-  background-color: var(--navy);
-  color: var(--white);
+  background-color: var(--navy) !important;
+  color: var(--white) !important;
   border: none;
-  padding: 8px 16px;
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-left: 0 !important;
+  margin-bottom: 16px !important;
 }
 
 .post-box {

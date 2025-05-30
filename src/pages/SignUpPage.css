@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08); /* inner shadow */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .signup-form label {
@@ -40,7 +40,7 @@
   font-size: 15px;
   display: flex;
   align-items: center;
-  width: 100%; /* 기본적으로 모든 input 크기 고정 */
+  width: 100%; 
   box-sizing: border-box;
 }
 
@@ -78,7 +78,7 @@
 }
 
 .signup-container {
-  position: relative; /* X 버튼 absolute용 */
+  position: relative;
   background-color: var(--white);
   width: 100vw;
   min-height: 100vh;
@@ -99,14 +99,14 @@
 }
 
 .signup-form-wrapper {
-  position: relative; /* X 버튼 포지셔닝 기준 */
+  position: relative; 
   width: 340px;
 }
 
 .close-button {
   position: absolute;
-  top: -50px;       /* 박스 위로 살짝 띄움 */
-  right: -28px;     /* 박스 오른쪽으로 살짝 띄움 */
+  top: -50px;      
+  right: -28px;    
   width: 28px;
   height: 28px;
   cursor: pointer;

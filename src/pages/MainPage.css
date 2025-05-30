@@ -131,12 +131,12 @@
 
 .hot-post-card {
   background-color: var(--sub-yellow-1);
-  border-bottom: 1px solid var(--gray-1); /* 내부 구분선 */
+  border-bottom: 1px solid var(--gray-1);
   padding: 8px 0;
 }
 
 .hot-post-card:last-child {
-  border-bottom: none; /* 마지막 요소는 구분선 제거 */
+  border-bottom: none; 
 }
 
 .hot-post-header {
@@ -170,5 +170,5 @@
 .stat {
   display: flex;
   align-items: center;
-  gap: 3px;  /* 아이콘과 숫자 사이도 조금 띄움 */
+  gap: 3px; 
 }

@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px; /* 프로필과 버튼 사이 간격 */
+  gap: 8px;
 }
 
 .profile-icon {
@@ -100,7 +100,7 @@
   text-align: center;
   font-size: 30px;
   padding: 12px;
-  width: 80%; /* 또는 max-width: 500px; */
+  width: 80%; 
   margin-left: auto;
   margin-right: auto;
   margin-top: 16px;
@@ -194,7 +194,6 @@
   cursor: pointer;
 }
 
-/* 좋아요 & 댓글 수 스타일 */
 .post-stats {
   display: flex;
   justify-content: flex-end;
@@ -216,7 +215,6 @@
   object-fit: contain;
 }
 
-/* 기존 post-card에 추가 공간 확보 */
 .post-card {
   background-color: var(--gray-2);
   border-radius: 12px;
@@ -224,7 +222,6 @@
   position: relative;
 }
 
-/* 좋아요 & 댓글 수 아래쪽 맞춤 */
 .post-footer {
   display: flex;
   justify-content: flex-end;

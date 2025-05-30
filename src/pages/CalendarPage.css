@@ -4,14 +4,13 @@
   padding-bottom: 100%;
 }
 
-/* 헤더 */
 .calendar-header {
   background-color: var(--main-yellow);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  position: relative; /* 팝업 absolute 기준 */
+  position: relative; 
 }
 
 .icon {
@@ -38,7 +37,6 @@
   font-size: 30px;
 }
 
-/* 요일 라벨 */
 .weekday-row {
   display: flex;
   justify-content: space-around;
@@ -55,7 +53,6 @@
   color: blue;
 }
 
-/* 달력 그리드 */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -91,7 +88,6 @@
   cursor: default;
 }
 
-/* Today Section */
 .today-section {
   padding: 16px;
   position: relative;
@@ -153,7 +149,6 @@
   font-weight: 600;
 }
 
-/* 팝업 공통 */
 .popup-menu,
 .popup-logout {
   position: absolute;

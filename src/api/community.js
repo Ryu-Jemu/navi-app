@@ -1,6 +1,6 @@
 import { getAuthHeader } from '../utils/token';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://127.0.0.1:8000/api';
 
 export const addCommunityPost = async (postData) => {
   const res = await fetch(`${API_URL}/community`, {
@@ -24,7 +24,13 @@ export const addCommunityPost = async (postData) => {
  * 커뮤니티 게시글 전체 조회
  */
 export async function fetchCommunityPosts() {
-  const res = await fetch(`${API_URL}/posts`);
+  const res = await fetch(`${API_URL}/community/boards/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      ...getAuthHeader(),
+    },
+  });
   if (!res.ok) {
     throw new Error('Failed to fetch posts');
   }

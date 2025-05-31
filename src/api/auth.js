@@ -39,6 +39,8 @@ export async function findPassword({ studentId, password }) {
     return res.json();
 }
 
+
+// 임시
 export async function refreshToken(refresh) {
     const res = await fetch(`${API_URL}/api/token/refresh/`, {
         method: 'POST',
@@ -51,6 +53,7 @@ export async function refreshToken(refresh) {
     return res.json();
 }
 
+// 임시
 export async function resetPassword({ current_password, new_password }) {
     const res = await fetch(`${API_URL}/reset-password/`, {
         method: 'POST',

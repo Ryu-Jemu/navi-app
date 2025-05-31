@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AddPostPage.css';
 import closeIcon from '../assets/X.svg';
 import cameraIcon from '../assets/Photo.svg';
-import { addCommunityPost } from '../api/community';
+import { createCommunityBoard, addCommunityPost } from '../api/community';
 
 const AddPostPage = () => {
   const navigate = useNavigate();
@@ -17,15 +17,19 @@ const AddPostPage = () => {
       return;
     }
 
-    const newPost = {
-      title,
-      content,
-      isAnon,
-      date: new Date().toISOString(),
-    };
-
     try {
-      // promise가 처리될 때까지 기다린다.
+      // 게시판 생성
+      const newBoard = await createCommunityBoard({
+        name: `Board for ${title}`,
+        description: 'Auto-created for post',
+      });
+
+      const newPost = {
+        title,
+        content,
+        board: newBoard.id,
+      };
+
       await addCommunityPost(newPost);
       navigate('/community');
     } catch (err) {

@@ -30,15 +30,22 @@ const SignUpPage = () => {
       alert('Please enter a valid email address.');
       return;
     }
+    console.log({ name, password, email, studentId, nickname });
 
     try {
-      const result = await signup({ name, nickname, country, studentId, password, email });
-      if (result.success) {
+      const result = await signup({
+        username: name,
+        password,
+        email,
+        student_id: studentId,
+        nickname
+      });
+      if (result) {
         alert('Signup successful. Please log in.');
         // 로그인 페이지로 이동
-        setTimeout (() => navigate('/login'));
+        navigate('/login');
       } else {
-        alert('Signup failed: ' + result.message);
+        alert('Signup failed: ' + (result && result.message ? result.message : 'Unknown error'));
       }
     } catch (err) {
       console.error('Signup error:', err);

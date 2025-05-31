@@ -1,11 +1,11 @@
 // src/api/auth.js
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://127.0.0.1:8000/api';
 
-export async function login({ studentId, password }) {
-    const res = await fetch(`http://localhost:3000/api/accounts/login/`, {
+export async function login({ username, password }) {
+    const res = await fetch(`${API_URL}/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ studentId, password })
+        body: JSON.stringify({ username, password })
     });
 
     if (!res.ok) throw new Error('Login failed');
@@ -18,20 +18,53 @@ export async function login({ studentId, password }) {
     return data;
 }
 
-export async function signup({ name, nickname, country, studentId, password, email }) {
-    const res = await fetch(`${API_URL}/accounts/signup/`, {
+export async function signup({ username, password, email, student_id, nickname }) {
+    const res = await fetch(`${API_URL}/signup/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, nickname, country, studentId, password, email })
+        body: JSON.stringify({ username, password, email, student_id, nickname })
     });
+
+    if (!res.ok) throw new Error('Signup failed');
+
     return res.json();
 }
 
 export async function findPassword({ studentId, password }) {
-    const res = await fetch(`${API_URL}/findpassword`, {
+    const res = await fetch(`${API_URL}/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ studentId, password })
     });
+    return res.json();
+}
+
+
+// 임시
+export async function refreshToken(refresh) {
+    const res = await fetch(`${API_URL}/api/token/refresh/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refresh })
+    });
+
+    if (!res.ok) throw new Error('Token refresh failed');
+
+    return res.json();
+}
+
+// 임시
+export async function resetPassword({ current_password, new_password }) {
+    const res = await fetch(`${API_URL}/reset-password/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access')}`
+        },
+        body: JSON.stringify({ current_password, new_password })
+    });
+
+    if (!res.ok) throw new Error('Password reset failed');
+
     return res.json();
 }

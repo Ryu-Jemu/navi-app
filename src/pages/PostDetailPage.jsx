@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './PostDetailPage.css';
 import HeartIcon from '../assets/Heart.svg';
 import CommentIcon from '../assets/Comment.svg';
-import { fetchCommunityPostById, updateCommunityPost } from '../api/community';
+import { fetchCommunityPostById, toggleCommunityPostLike, addCommentToPost, fetchCommentsByPostId, deleteComment } from '../api/community';
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -15,39 +15,52 @@ const PostDetailPage = () => {
 
   // 초기 데이터 로딩 로직 해당 id의 글을 가져온다.
   useEffect(() => {
-    fetchCommunityPostById(id).then(data => {
-      setPost(data);
-      setComments(data.comments || []);
-    });
+    const fetchData = async () => {
+      // 게시글과 댓글을 rendering
+      const postData = await fetchCommunityPostById(id);
+      const commentData = await fetchCommentsByPostId(id);
+      setPost(postData);
+      setComments(commentData);
+    };
+    fetchData();
   }, [id]);
 
-  const handleLike = () => {
-    if (!liked) {
-      const updatedPost = { ...post, likes: (post.likes || 0) + 1 };
-      updatePost(updatedPost);
-      setLiked(true);
+  const handleLike = async () => {
+    try {
+      const message = await toggleCommunityPostLike(id);
+      // 좋아요 수정하면 reload
+      const updatedPost = await fetchCommunityPostById(id);
+      setPost(updatedPost);
+      setLiked(!liked);
+      console.log(message); // 또는 alert(message)
+    } catch (err) {
+      console.error('좋아요 처리 실패:', err.message);
     }
   };
 
-  const handleAddComment = () => {
+  // 댓글 따로 분리
+  const handleAddComment = async () => {
     if (newComment.trim() === '') return;
-    const updatedComments = [...comments, newComment];
-    const updatedPost = { ...post, comments: updatedComments };
-    updatePost(updatedPost);
-    setComments(updatedComments);
-    setNewComment('');
+    try {
+      await addCommentToPost(id, newComment);
+      // 댓글 추가하면 reload
+      const updatedComments = await fetchCommentsByPostId(id);
+      setComments(updatedComments);
+      setNewComment('');
+    } catch (err) {
+      console.error('댓글 작성 실패:', err.message);
+    }
   };
 
-  const handleDeleteComment = (index) => {
-    const updatedComments = comments.filter((_, i) => i !== index);
-    const updatedPost = { ...post, comments: updatedComments };
-    updatePost(updatedPost);
-    setComments(updatedComments);
-  };
-
-  const updatePost = async (updatedPost) => {
-    const savedPost = await updateCommunityPost(updatedPost);
-    setPost(savedPost);
+  const handleDeleteComment = async (commentId) => {
+    try {
+      await deleteComment(commentId);
+      // 삭제하면 reload
+      const updatedComments = await fetchCommentsByPostId(id);
+      setComments(updatedComments);
+    } catch (err) {
+      console.error('댓글 삭제 실패:', err.message);
+    }
   };
 
   if (!post) return <p>Loading...</p>;
@@ -75,10 +88,10 @@ const PostDetailPage = () => {
 
       <div className="comments-section">
         <h3>Comments</h3>
-        {comments.map((c, index) => (
-          <div key={index} className="comment-item">
-            <span>{c}</span>
-            <button className="delete-comment-button" onClick={() => handleDeleteComment(index)}>Delete</button>
+        {comments.map((c) => (
+          <div key={c.id} className="comment-item">
+            <span>{c.content}</span>
+            <button className="delete-comment-button" onClick={() => handleDeleteComment(c.id)}>Delete</button>
           </div>
         ))}
       </div>

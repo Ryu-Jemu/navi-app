@@ -7,14 +7,13 @@ import { saveToken } from '../utils/token'
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [studentId, setStudentId] = React.useState('');
+  const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const handleSubmit = async (e) => {
-      // 새로고침 막음
     e.preventDefault();
     try {
-      const result = await login({ studentId, password });
+      const result = await login({ username, password });
       if (result.access && result.refresh) {
         localStorage.setItem('access', result.access);
         localStorage.setItem('refresh', result.refresh);
@@ -36,9 +35,9 @@ const LoginPage = () => {
         <h2 className="login-title">Log-In</h2>
 
         <form className="login-form" onSubmit={handleSubmit}>
-          <label htmlFor="student-id">Student ID</label>
-          <input id="student-id" type="text" placeholder="10-digit number" required
-                 value={studentId} onChange={(e) => setStudentId(e.target.value)} />
+          <label htmlFor="username">Username</label>
+          <input id="username" type="text" placeholder="Your username" required
+                 value={username} onChange={(e) => setUsername(e.target.value)} />
 
           <label htmlFor="password">Password</label>
           <input id="password" type="password" placeholder="Password" required

@@ -6,13 +6,13 @@ import { findPassword } from '../api/auth';
 
 const FindPage = () => {
   const navigate = useNavigate();
-  const [studentId, setStudentId] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
   const handleFindPassword = async (e) => {
     e.preventDefault();
     try {
-      const result = await findPassword({ studentId, email });
+      const result = await findPassword({ username, email });
       if (result.success) {
         alert('Temporary password has been sent to your email.');
         setTimeout(() => navigate('/login'));
@@ -34,8 +34,8 @@ const FindPage = () => {
 
         <div className="find-box">
           <form className="find-form" onSubmit={handleFindPassword}>
-            <label>Student ID</label>
-            <input type="text" placeholder="10-digit number" value={studentId} onChange={(e) => setStudentId(e.target.value)} />
+            <label>Username</label>
+            <input type="text" placeholder="Enter your username" value={username} onChange={(e) => setUsername(e.target.value)} />
 
             <label>E-mail</label>
             <input type="email" placeholder="@hanyang.ac.kr" value={email} onChange={(e) => setEmail(e.target.value)} />

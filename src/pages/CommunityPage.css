@@ -69,6 +69,13 @@
   margin-top:14px;
 }
 
+.add-post-button:hover {
+  background-color: var(--navy);
+  color: var(--white);
+  box-sizing: border-box;
+  border: 1px solid var(--main-yellow);
+}
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -106,8 +113,12 @@
 
 .tab-menu {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray-2);
+  max-width: 85%;
+  border-radius: 20px;
+  margin: 0 auto 16px auto;
 }
 
 .tab-button {
@@ -115,7 +126,7 @@
   border: none;
   font-size: 14px;
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 12px 16px;
   cursor: pointer;
   color: var(--black);
 }
@@ -123,7 +134,7 @@
 .tab-button.active {
   background-color: var(--navy);
   color: var(--white);
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
 .post-list {

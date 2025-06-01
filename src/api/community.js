@@ -24,7 +24,7 @@ export const addCommunityPost = async (postData) => {
  * 커뮤니티 게시글 전체 조회
  */
 export async function fetchCommunityPosts() {
-  const res = await fetch(`${API_URL}/community/boards/`, {
+  const res = await fetch(`${API_URL}/community/posts/`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

@@ -30,7 +30,20 @@ const CommunityPage = () => {
   const profileRef = useRef(null);
 
   useEffect(() => {
-    fetchCommunityPosts().then(setPosts);
+    fetchCommunityPosts().then((data) => {
+      const formattedPosts = data.map((post) => ({
+        id: post.id,
+        title: post.title,
+        content: post.content,
+        isAnon: post.is_anon,
+        date: new Date(post.created_at).toLocaleDateString(),
+        likes: post.likes,
+        comments: Array(post.comment_count).fill(''),
+        author: post.author,
+        view_count: post.view_count,
+      }));
+      setPosts(formattedPosts);
+    });
 
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -124,7 +137,7 @@ const CommunityPage = () => {
                 <div className="post-header">
                   <div className="post-user">
                     <img src={AnonIcon} alt="Anon" className="checkuser" />
-                    <span>{post.isAnon ? 'Anon' : 'User'}</span>
+                    <span>{post.isAnon ? 'Anon' : post.author?.nickname || post.author?.username || 'User'}</span>
                   </div>
                   <div className="post-date">{post.date}</div>
                 </div>
@@ -137,7 +150,7 @@ const CommunityPage = () => {
                   </div>
                   <div className="stat-item">
                     <img src={CommentIcon} alt="Comments" className="stat-icon" />
-                    <span>{post.comments ? post.comments.length : 0}</span>
+                    <span>{Array.isArray(post.comments) ? post.comments.length : 0}</span>
                   </div>
                 </div>
               </div>

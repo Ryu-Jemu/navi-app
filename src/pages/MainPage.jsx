@@ -5,17 +5,21 @@ import logoImage from '../assets/logo.svg';
 import HeartIcon from '../assets/Heart.svg';
 import CommentIcon from '../assets/Comment.svg'
 import { useNavigate } from 'react-router-dom';
+import { fetchCommunityPosts } from '../api/community';
 
 const Main_Page = () => {
   const navigate = useNavigate();
   const [latestPosts, setLatestPosts] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
-  
+
   useEffect(() => {
-    // 커뮤니티 최신 글 3개
-    const storedPosts = JSON.parse(localStorage.getItem('communityPosts')) || [];
-    const sortedPosts = storedPosts.sort((a, b) => b.id - a.id).slice(0, 3);
-    setLatestPosts(sortedPosts);
+    // 커뮤니티 인기 글 2개
+    fetchCommunityPosts().then((data) => {
+      const hottestPosts = data
+        .sort((a, b) => b.likes - a.likes)
+        .slice(0, 2);
+      setLatestPosts(hottestPosts);
+    });
 
     // 오늘 기준 앞으로 할 일 3개
     const today = new Date();

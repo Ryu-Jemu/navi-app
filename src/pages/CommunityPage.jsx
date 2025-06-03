@@ -39,7 +39,7 @@ const CommunityPage = () => {
         date: new Date(post.created_at).toLocaleDateString(),
         likes: post.likes,
         comments: Array(post.comment_count).fill(''),
-        author: post.author,
+        author: post.is_anon ? {nickname: 'Anon', username: 'Anon'} : post.author,
         view_count: post.view_count,
       }));
       setPosts(formattedPosts);

@@ -28,6 +28,7 @@ const AddPostPage = () => {
         title,
         content,
         board: newBoard.id,
+        is_anon: isAnon,
       };
 
       await addCommunityPost(newPost);

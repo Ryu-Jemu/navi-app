@@ -14,7 +14,7 @@ const ChatPage = () => {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: '안녕하세요. 무엇을 도와드릴까요?',
+      text: 'Hello! How can I assist you today?',
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     },
   ]);

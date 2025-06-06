@@ -7,6 +7,7 @@ import ListIcon from '../assets/List.svg';
 import PlusIcon from '../assets/Plus.svg';
 import MoveLeftIcon from '../assets/MoveLeft.svg';
 import MoveRightIcon from '../assets/MoveRight.svg';
+import { fetchSchedules, createSchedule } from '../api/task';
 
 const CalendarPage = () => {
   const today = new Date();
@@ -35,6 +36,25 @@ const CalendarPage = () => {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
+
+    // fetchSchedules로 서버에서 일정 받아오기
+    const loadTasks = async () => {
+      try {
+        const data = await fetchSchedules();
+        const grouped = {};
+        data.forEach(({ description, end_time }) => {
+          const dateKey = end_time.split('T')[0];
+          if (!grouped[dateKey]) grouped[dateKey] = [];
+          grouped[dateKey].push({ text: description, deadline: dateKey });
+        });
+        setTasks(grouped);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadTasks();
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -84,19 +104,32 @@ const CalendarPage = () => {
     setDeadlineInput(''); // 초기화
   };
 
-  const handleSubmitTask = () => {
+  const handleSubmitTask = async () => {
     if (taskInput.trim() === '' || deadlineInput.trim() === '') {
       alert('Please enter both a task and a deadline.');
       return;
     }
-    const key = deadlineInput; // 선택한 마감일을 key로 사용
-    setTasks((prev) => ({
-      ...prev,
-      [key]: prev[key] ? [...prev[key], { text: taskInput, deadline: key }] : [{ text: taskInput, deadline: key }],
-    }));
-    setTaskInput('');
-    setDeadlineInput('');
-    setShowAddTask(false);
+
+    try {
+      await createSchedule({
+        title: 'default', // unused
+        description: taskInput,
+        start_time: deadlineInput,
+        end_time: deadlineInput,
+      });
+
+      const key = deadlineInput;
+      setTasks((prev) => ({
+        ...prev,
+        [key]: prev[key] ? [...prev[key], { text: taskInput, deadline: key }] : [{ text: taskInput, deadline: key }],
+      }));
+
+      setTaskInput('');
+      setDeadlineInput('');
+      setShowAddTask(false);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const monthNames = [
